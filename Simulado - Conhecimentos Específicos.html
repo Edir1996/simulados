@@ -2,48 +2,70 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulado - Conhecimentos Específicos</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       padding: 20px;
+      margin: 0;
     }
+
     h1 {
       text-align: center;
       color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 1.8em;
     }
+
     .questao {
       background: #fff;
       padding: 15px;
-      margin: 15px 0;
+      margin-bottom: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .questao label {
+      display: block;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
     .explicacao {
       font-size: 0.9em;
       color: #555;
       margin-top: 5px;
-      display: none; /* Oculta por padrão */
+      display: none;
     }
+
     .resultado {
       margin-top: 30px;
       font-weight: bold;
       font-size: 1.2em;
+      text-align: center;
     }
+
     .erro {
       color: red;
       margin-top: 5px;
       font-weight: bold;
     }
+
     .acerto {
       color: green;
       margin-top: 5px;
       font-weight: bold;
     }
+
     button {
       display: block;
-      margin: 20px auto;
+      margin: 30px auto 10px;
       padding: 12px 30px;
       font-size: 16px;
       background-color: #3498db;
@@ -51,9 +73,46 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #2980b9;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      button {
+        width: 100%;
+        font-size: 1em;
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3em;
+      }
+
+      .questao {
+        padding: 10px;
+      }
+
+      .questao label {
+        font-size: 0.95em;
+      }
+
+      .resultado {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
@@ -66,279 +125,279 @@
   </form>
 
   <script>
-      const questoes = [
-    {
-      texto: "Qual a função principal da empilhadeira na área portuária?",
-      opcoes: [
-        "Transportar pessoas de um lado para o outro",
-        "Elevar e movimentar cargas em paletes ou contêineres",
-        "Fiscalizar o uso de EPI",
-        "Abrir e fechar contêineres"
-      ],
-      correta: 1,
-      explicacao: "A empilhadeira é usada para movimentar cargas unitizadas como paletes e contêineres dentro do porto ou armazém."
-    },
-    {
-      texto: "Qual destes equipamentos é utilizado para içar cargas pesadas por meio de cabos de aço?",
-      opcoes: [
-        "Guindaste",
-        "Caminhão",
-        "Empilhadeira manual",
-        "Paleteira"
-      ],
-      correta: 0,
-      explicacao: "O guindaste é um equipamento de grande porte utilizado para içar cargas pesadas com auxílio de cabos."
-    },
-    {
-      texto: "O que significa capatazia no contexto portuário?",
-      opcoes: [
-        "Atendimento ao cliente",
-        "Serviço de movimentação de cargas nos portos, incluindo carga e descarga",
-        "Venda de passagens marítimas",
-        "Limpeza do cais"
-      ],
-      correta: 1,
-      explicacao: "Capatazia refere-se às atividades de carga, descarga, arrumação e conferência de mercadorias no porto."
-    },
-    {
-      texto: "Qual o principal objetivo do uso de EPIs?",
-      opcoes: [
-        "Substituir o uniforme",
-        "Proteger o trabalhador contra riscos à sua saúde e integridade física",
-        "Controlar o horário de trabalho",
-        "Garantir produtividade"
-      ],
-      correta: 1,
-      explicacao: "Os Equipamentos de Proteção Individual (EPIs) são essenciais para a segurança e saúde do trabalhador."
-    },
-    {
-      texto: "O que é obrigatório antes de iniciar a operação de um equipamento de carga?",
-      opcoes: [
-        "Ligar o motor rapidamente",
-        "Fazer uma inspeção de segurança do equipamento",
-        "Carregar com carga máxima",
-        "Testar o rádio comunicador"
-      ],
-      correta: 1,
-      explicacao: "Antes de operar, é necessário fazer a inspeção visual e funcional do equipamento para garantir que está em condições seguras de uso."
-    },
-    {
-      texto: "Qual destes EPIs é indispensável em áreas de movimentação de carga?",
-      opcoes: [
-        "Sandálias de borracha",
-        "Chapéu de palha",
-        "Capacete de segurança",
-        "Gravata"
-      ],
-      correta: 2,
-      explicacao: "O capacete de segurança protege a cabeça contra impactos com objetos e é obrigatório nas áreas de operação."
-    },
-    {
-      texto: "Qual das alternativas representa um risco comum em operações portuárias?",
-      opcoes: [
-        "Falta de água potável",
-        "Queda de objetos e esmagamento",
-        "Barulho do mar",
-        "Brisa marítima"
-      ],
-      correta: 1,
-      explicacao: "A movimentação constante de cargas e equipamentos pesados gera riscos como quedas de objetos e esmagamento."
-    },
-    {
-      texto: "De acordo com normas de segurança, o cinto de segurança tipo paraquedista é utilizado em qual situação?",
-      opcoes: [
-        "Em locais de grande calor",
-        "Para dirigir empilhadeiras",
-        "Em trabalhos em altura",
-        "Durante intervalos"
-      ],
-      correta: 2,
-      explicacao: "O cinto de segurança tipo paraquedista é obrigatório em atividades realizadas a mais de 2 metros de altura."
-    },
-    {
-      texto: "O que se entende por logística portuária?",
-      opcoes: [
-        "Organização de festas náuticas",
-        "Atividades de fiscalização da polícia portuária",
-        "Gestão do fluxo de cargas, documentos e informações no porto",
-        "Compra de equipamentos"
-      ],
-      correta: 2,
-      explicacao: "Logística portuária envolve planejamento e controle do fluxo de mercadorias, documentos e transporte dentro do ambiente portuário."
-    },
-    {
-      texto: "Qual é a primeira medida em caso de acidente de trabalho no porto?",
-      opcoes: [
-        "Ocultar o ocorrido",
-        "Levar o trabalhador ao bar mais próximo",
-        "Acionar os serviços de emergência e comunicar o superior",
-        "Anotar em um caderno e continuar"
-      ],
-      correta: 2,
-      explicacao: "Em caso de acidente, a prioridade é prestar socorro e acionar os serviços médicos, informando a liderança imediatamente."
-    },
-    {
-      texto: "O que é considerado um EPI?",
-      opcoes: [
-        "Carrinho de carga",
-        "Máscara de proteção respiratória",
-        "Rádio transmissor",
-        "Maçarico"
-      ],
-      correta: 1,
-      explicacao: "Máscaras de proteção respiratória são EPIs essenciais em ambientes com poeira ou vapores tóxicos."
-    },
-    {
-      texto: "O uso inadequado de EPIs pode resultar em:",
-      opcoes: [
-        "Promoção",
-        "Multa ao trabalhador e à empresa",
-        "Liberação para ir embora mais cedo",
-        "Aumento de salário"
-      ],
-      correta: 1,
-      explicacao: "A negligência no uso de EPIs pode gerar multas, punições e acidentes graves no ambiente de trabalho."
-    },
-    {
-      texto: "O que deve ser feito antes de movimentar uma carga suspensa com guindaste?",
-      opcoes: [
-        "Acionar a buzina do guindaste",
-        "Garantir que não haja ninguém na área sob a carga",
-        "Acelerar o processo para ganhar tempo",
-        "Desligar o sistema de freio"
-      ],
-      correta: 1,
-      explicacao: "É essencial garantir que não haja trabalhadores sob a área de movimentação da carga para evitar acidentes."
-    },
-    {
-      texto: "Quem é o responsável por fornecer os EPIs adequados ao trabalhador?",
-      opcoes: [
-        "Sindicato",
-        "OGMO",
-        "Empregador ou OGMO",
-        "Próprio trabalhador"
-      ],
-      correta: 2,
-      explicacao: "O fornecimento dos EPIs é obrigação do empregador ou OGMO, conforme a legislação trabalhista."
-    },
-    {
-      texto: "O que significa a sigla CIPA no contexto da segurança do trabalho?",
-      opcoes: [
-        "Comissão Interna de Prevenção de Acidentes",
-        "Cadastro de Instrução Portuária Avançada",
-        "Controle Integrado de Portos e Armazéns",
-        "Certificação de Itens de Proteção Ambiental"
-      ],
-      correta: 0,
-      explicacao: "A CIPA é responsável por promover ações para prevenção de acidentes e doenças no ambiente de trabalho."
-    },
-    {
-      texto: "Qual atitude é considerada correta durante a operação de equipamentos portuários?",
-      opcoes: [
-        "Utilizar o celular enquanto opera",
-        "Fumar durante a movimentação de carga",
-        "Manter atenção total à operação e seguir os procedimentos",
-        "Conversar com colegas enquanto opera"
-      ],
-      correta: 2,
-      explicacao: "A operação de equipamentos exige atenção total, sendo proibido distrações ou atitudes que comprometam a segurança."
-    },
-    {
-      texto: "A sinalização de segurança tem qual função nos portos?",
-      opcoes: [
-        "Enfeitar o ambiente",
-        "Promover marcas comerciais",
-        "Informar e alertar os trabalhadores sobre riscos e procedimentos",
-        "Indicar promoções"
-      ],
-      correta: 2,
-      explicacao: "A sinalização orienta os trabalhadores quanto aos riscos, rotas de fuga e uso de EPIs, prevenindo acidentes."
-    },
-    {
-      texto: "Qual o nome do documento que deve ser emitido após um acidente de trabalho?",
-      opcoes: [
-        "Atestado médico comum",
-        "Boletim informativo",
-        "CAT (Comunicação de Acidente de Trabalho)",
-        "Aviso de ausência"
-      ],
-      correta: 2,
-      explicacao: "A CAT é o documento oficial que registra o acidente de trabalho para fins previdenciários e legais."
-    },
-    {
-      texto: "Quando é permitido movimentar uma carga com pessoas por perto?",
-      opcoes: [
-        "Sempre que for urgente",
-        "Nunca. A área deve estar isolada",
-        "Se a carga for leve",
-        "Se a carga estiver bem amarrada"
-      ],
-      correta: 1,
-      explicacao: "Nunca se deve movimentar cargas com pessoas na área de risco. A zona deve ser isolada para garantir segurança."
-    },
-    {
-      texto: "Durante a operação com empilhadeira, qual é a atitude incorreta?",
-      opcoes: [
-        "Manter a carga estável",
-        "Dirigir com velocidade compatível",
-        "Transportar pessoas na empilhadeira",
-        "Fazer manobras suaves"
-      ],
-      correta: 2,
-      explicacao: "Empilhadeiras são para transporte de carga, não de pessoas. Isso representa alto risco de acidente."
-    }
-  ];
+    const questoes = [
+  {
+    texto: "Qual a função principal da empilhadeira na área portuária?",
+    opcoes: [
+      "Transportar pessoas de um lado para o outro",
+      "Elevar e movimentar cargas em paletes ou contêineres",
+      "Fiscalizar o uso de EPI",
+      "Abrir e fechar contêineres"
+    ],
+    correta: 1,
+    explicacao: "A empilhadeira é usada para movimentar cargas unitizadas como paletes e contêineres dentro do porto ou armazém."
+  },
+  {
+    texto: "Qual destes equipamentos é utilizado para içar cargas pesadas por meio de cabos de aço?",
+    opcoes: [
+      "Guindaste",
+      "Caminhão",
+      "Empilhadeira manual",
+      "Paleteira"
+    ],
+    correta: 0,
+    explicacao: "O guindaste é um equipamento de grande porte utilizado para içar cargas pesadas com auxílio de cabos."
+  },
+  {
+    texto: "O que significa capatazia no contexto portuário?",
+    opcoes: [
+      "Atendimento ao cliente",
+      "Serviço de movimentação de cargas nos portos, incluindo carga e descarga",
+      "Venda de passagens marítimas",
+      "Limpeza do cais"
+    ],
+    correta: 1,
+    explicacao: "Capatazia refere-se às atividades de carga, descarga, arrumação e conferência de mercadorias no porto."
+  },
+  {
+    texto: "Qual o principal objetivo do uso de EPIs?",
+    opcoes: [
+      "Substituir o uniforme",
+      "Proteger o trabalhador contra riscos à sua saúde e integridade física",
+      "Controlar o horário de trabalho",
+      "Garantir produtividade"
+    ],
+    correta: 1,
+    explicacao: "Os Equipamentos de Proteção Individual (EPIs) são essenciais para a segurança e saúde do trabalhador."
+  },
+  {
+    texto: "O que é obrigatório antes de iniciar a operação de um equipamento de carga?",
+    opcoes: [
+      "Ligar o motor rapidamente",
+      "Fazer uma inspeção de segurança do equipamento",
+      "Carregar com carga máxima",
+      "Testar o rádio comunicador"
+    ],
+    correta: 1,
+    explicacao: "Antes de operar, é necessário fazer a inspeção visual e funcional do equipamento para garantir que está em condições seguras de uso."
+  },
+  {
+    texto: "Qual destes EPIs é indispensável em áreas de movimentação de carga?",
+    opcoes: [
+      "Sandálias de borracha",
+      "Chapéu de palha",
+      "Capacete de segurança",
+      "Gravata"
+    ],
+    correta: 2,
+    explicacao: "O capacete de segurança protege a cabeça contra impactos com objetos e é obrigatório nas áreas de operação."
+  },
+  {
+    texto: "Qual das alternativas representa um risco comum em operações portuárias?",
+    opcoes: [
+      "Falta de água potável",
+      "Queda de objetos e esmagamento",
+      "Barulho do mar",
+      "Brisa marítima"
+    ],
+    correta: 1,
+    explicacao: "A movimentação constante de cargas e equipamentos pesados gera riscos como quedas de objetos e esmagamento."
+  },
+  {
+    texto: "De acordo com normas de segurança, o cinto de segurança tipo paraquedista é utilizado em qual situação?",
+    opcoes: [
+      "Em locais de grande calor",
+      "Para dirigir empilhadeiras",
+      "Em trabalhos em altura",
+      "Durante intervalos"
+    ],
+    correta: 2,
+    explicacao: "O cinto de segurança tipo paraquedista é obrigatório em atividades realizadas a mais de 2 metros de altura."
+  },
+  {
+    texto: "O que se entende por logística portuária?",
+    opcoes: [
+      "Organização de festas náuticas",
+      "Atividades de fiscalização da polícia portuária",
+      "Gestão do fluxo de cargas, documentos e informações no porto",
+      "Compra de equipamentos"
+    ],
+    correta: 2,
+    explicacao: "Logística portuária envolve planejamento e controle do fluxo de mercadorias, documentos e transporte dentro do ambiente portuário."
+  },
+  {
+    texto: "Qual é a primeira medida em caso de acidente de trabalho no porto?",
+    opcoes: [
+      "Ocultar o ocorrido",
+      "Levar o trabalhador ao bar mais próximo",
+      "Acionar os serviços de emergência e comunicar o superior",
+      "Anotar em um caderno e continuar"
+    ],
+    correta: 2,
+    explicacao: "Em caso de acidente, a prioridade é prestar socorro e acionar os serviços médicos, informando a liderança imediatamente."
+  },
+  {
+    texto: "O que é considerado um EPI?",
+    opcoes: [
+      "Carrinho de carga",
+      "Máscara de proteção respiratória",
+      "Rádio transmissor",
+      "Maçarico"
+    ],
+    correta: 1,
+    explicacao: "Máscaras de proteção respiratória são EPIs essenciais em ambientes com poeira ou vapores tóxicos."
+  },
+  {
+    texto: "O uso inadequado de EPIs pode resultar em:",
+    opcoes: [
+      "Promoção",
+      "Multa ao trabalhador e à empresa",
+      "Liberação para ir embora mais cedo",
+      "Aumento de salário"
+    ],
+    correta: 1,
+    explicacao: "A negligência no uso de EPIs pode gerar multas, punições e acidentes graves no ambiente de trabalho."
+  },
+  {
+    texto: "O que deve ser feito antes de movimentar uma carga suspensa com guindaste?",
+    opcoes: [
+      "Acionar a buzina do guindaste",
+      "Garantir que não haja ninguém na área sob a carga",
+      "Acelerar o processo para ganhar tempo",
+      "Desligar o sistema de freio"
+    ],
+    correta: 1,
+    explicacao: "É essencial garantir que não haja trabalhadores sob a área de movimentação da carga para evitar acidentes."
+  },
+  {
+    texto: "Quem é o responsável por fornecer os EPIs adequados ao trabalhador?",
+    opcoes: [
+      "Sindicato",
+      "OGMO",
+      "Empregador ou OGMO",
+      "Próprio trabalhador"
+    ],
+    correta: 2,
+    explicacao: "O fornecimento dos EPIs é obrigação do empregador ou OGMO, conforme a legislação trabalhista."
+  },
+  {
+    texto: "O que significa a sigla CIPA no contexto da segurança do trabalho?",
+    opcoes: [
+      "Comissão Interna de Prevenção de Acidentes",
+      "Cadastro de Instrução Portuária Avançada",
+      "Controle Integrado de Portos e Armazéns",
+      "Certificação de Itens de Proteção Ambiental"
+    ],
+    correta: 0,
+    explicacao: "A CIPA é responsável por promover ações para prevenção de acidentes e doenças no ambiente de trabalho."
+  },
+  {
+    texto: "Qual atitude é considerada correta durante a operação de equipamentos portuários?",
+    opcoes: [
+      "Utilizar o celular enquanto opera",
+      "Fumar durante a movimentação de carga",
+      "Manter atenção total à operação e seguir os procedimentos",
+      "Conversar com colegas enquanto opera"
+    ],
+    correta: 2,
+    explicacao: "A operação de equipamentos exige atenção total, sendo proibido distrações ou atitudes que comprometam a segurança."
+  },
+  {
+    texto: "A sinalização de segurança tem qual função nos portos?",
+    opcoes: [
+      "Enfeitar o ambiente",
+      "Promover marcas comerciais",
+      "Informar e alertar os trabalhadores sobre riscos e procedimentos",
+      "Indicar promoções"
+    ],
+    correta: 2,
+    explicacao: "A sinalização orienta os trabalhadores quanto aos riscos, rotas de fuga e uso de EPIs, prevenindo acidentes."
+  },
+  {
+    texto: "Qual o nome do documento que deve ser emitido após um acidente de trabalho?",
+    opcoes: [
+      "Atestado médico comum",
+      "Boletim informativo",
+      "CAT (Comunicação de Acidente de Trabalho)",
+      "Aviso de ausência"
+    ],
+    correta: 2,
+    explicacao: "A CAT é o documento oficial que registra o acidente de trabalho para fins previdenciários e legais."
+  },
+  {
+    texto: "Quando é permitido movimentar uma carga com pessoas por perto?",
+    opcoes: [
+      "Sempre que for urgente",
+      "Nunca. A área deve estar isolada",
+      "Se a carga for leve",
+      "Se a carga estiver bem amarrada"
+    ],
+    correta: 1,
+    explicacao: "Nunca se deve movimentar cargas com pessoas na área de risco. A zona deve ser isolada para garantir segurança."
+  },
+  {
+    texto: "Durante a operação com empilhadeira, qual é a atitude incorreta?",
+    opcoes: [
+      "Manter a carga estável",
+      "Dirigir com velocidade compatível",
+      "Transportar pessoas na empilhadeira",
+      "Fazer manobras suaves"
+    ],
+    correta: 2,
+    explicacao: "Empilhadeiras são para transporte de carga, não de pessoas. Isso representa alto risco de acidente."
+  }
+];
 
 
 
 
-  
 
-    const container = document.getElementById("questoes-container");
+
+  const container = document.getElementById("questoes-container");
+  questoes.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "questao";
+    div.id = `questao${i}`;
+    div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
+      q.opcoes.map((opt, j) =>
+        `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
+      ).join('') +
+      `<div class="explicacao">${q.explicacao}</div>`;
+    container.appendChild(div);
+  });
+
+  function corrigir() {
+    let acertos = 0;
+
     questoes.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "questao";
-      div.id = `questao${i}`;
-      div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
-        q.opcoes.map((opt, j) =>
-          `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
-        ).join('') +
-        `<div class="explicacao">${q.explicacao}</div>`;
-      container.appendChild(div);
+      const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+      const questaoDiv = document.getElementById(`questao${i}`);
+      const msg = document.createElement("div");
+      const explicacao = questaoDiv.querySelector(".explicacao");
+
+      // Exibe a explicação
+      if (explicacao) {
+        explicacao.style.display = "block";
+      }
+
+      if (resposta && parseInt(resposta.value) === q.correta) {
+        acertos++;
+        msg.className = "acerto";
+        msg.innerText = "✅ Resposta correta";
+      } else {
+        msg.className = "erro";
+        msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
+      }
+
+      if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
+        questaoDiv.appendChild(msg);
+      }
     });
 
-    function corrigir() {
-      let acertos = 0;
+    document.getElementById("resultado").innerText =
+      `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
+  }
 
-      questoes.forEach((q, i) => {
-        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
-        const questaoDiv = document.getElementById(`questao${i}`);
-        const msg = document.createElement("div");
-        const explicacao = questaoDiv.querySelector(".explicacao");
-
-        // Exibe a explicação
-        if (explicacao) {
-          explicacao.style.display = "block";
-        }
-
-        if (resposta && parseInt(resposta.value) === q.correta) {
-          acertos++;
-          msg.className = "acerto";
-          msg.innerText = "✅ Resposta correta";
-        } else {
-          msg.className = "erro";
-          msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
-        }
-
-        if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
-          questaoDiv.appendChild(msg);
-        }
-      });
-
-      document.getElementById("resultado").innerText =
-        `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
-    }
-
-  </script>
+</script>
 </body>
 </html>
