@@ -218,6 +218,228 @@
       ],
       "correta": 2,
       "explicacao": "Empilhadeiras são para transporte de carga, não de pessoas. Isso representa alto risco de acidente."
-    }
-  ]
+    },
+
+      {
+        "texto": "O que deve ser verificado na empilhadeira antes de iniciar o trabalho?",
+        "opcoes": [
+          "A cor do veículo",
+          "A calibragem dos pneus e sistema hidráulico",
+          "Se o banco é confortável",
+          "Se a buzina toca música"
+        ],
+        "correta": 1,
+        "explicacao": "Antes de usar a empilhadeira, é fundamental verificar o sistema hidráulico, pneus, freios e demais itens de segurança."
+      },
+      {
+        "texto": "Por que é importante respeitar a sinalização de segurança em áreas portuárias?",
+        "opcoes": [
+          "Para evitar multas",
+          "Para embelezar o ambiente",
+          "Para garantir a segurança dos trabalhadores e das operações",
+          "Para obedecer ao chefe"
+        ],
+        "correta": 2,
+        "explicacao": "A sinalização alerta sobre riscos e orienta comportamentos seguros, prevenindo acidentes."
+      },
+      {
+        "texto": "O que é proibido durante a operação de um guindaste?",
+        "opcoes": [
+          "Utilizar o equipamento com carga excedente",
+          "Checar os freios antes do uso",
+          "Realizar comunicação com sinalizador",
+          "Estacionar em área plana"
+        ],
+        "correta": 0,
+        "explicacao": "Nunca se deve operar o guindaste com carga acima da capacidade, pois isso pode causar acidentes graves."
+      },
+      {
+        "texto": "Qual é o papel do sinaleiro na operação portuária?",
+        "opcoes": [
+          "Verificar o almoço dos operadores",
+          "Orientar a movimentação de cargas por meio de sinais visuais e sonoros",
+          "Limpar o cais",
+          "Anotar as horas extras"
+        ],
+        "correta": 1,
+        "explicacao": "O sinaleiro é responsável por guiar a movimentação de cargas, garantindo segurança e precisão nas operações."
+      },
+      {
+        "texto": "Qual é a atitude correta ao perceber um vazamento de óleo no local de trabalho?",
+        "opcoes": [
+          "Ignorar e seguir trabalhando",
+          "Cobrir com papelão",
+          "Comunicar imediatamente ao setor responsável",
+          "Jogar areia de praia em cima"
+        ],
+        "correta": 2,
+        "explicacao": "Vazamentos devem ser comunicados para evitar acidentes com escorregões e contaminações."
+      },
+      {
+        "texto": "Quais são os riscos do uso de celular durante a operação de equipamentos?",
+        "opcoes": [
+          "Interferência no sinal do equipamento",
+          "Pode causar explosões",
+          "Desatenção e aumento do risco de acidentes",
+          "Descarregar a bateria do equipamento"
+        ],
+        "correta": 2,
+        "explicacao": "O uso de celular durante operações tira o foco do operador, podendo causar acidentes graves."
+      },
+      {
+        "texto": "Como deve ser armazenado um botijão de gás no porto?",
+        "opcoes": [
+          "Deitado e longe de tudo",
+          "Próximo a áreas com fogo",
+          "Em pé, em local ventilado e seguro",
+          "Dentro de uma cabine fechada"
+        ],
+        "correta": 2,
+        "explicacao": "Botijões devem ficar em pé, em locais ventilados, afastados de fontes de calor, para evitar explosões."
+      },
+      {
+        "texto": "Qual a melhor forma de levantar manualmente uma carga pesada?",
+        "opcoes": [
+          "Com as costas curvadas",
+          "Ajoelhado e puxando com força",
+          "Com as pernas, mantendo a coluna reta",
+          "De lado, com o corpo torcido"
+        ],
+        "correta": 2,
+        "explicacao": "Levantar com a força das pernas e a coluna reta evita lesões na coluna e é a forma correta segundo a ergonomia."
+      },
+      {
+        "texto": "Por que a comunicação clara entre os trabalhadores é essencial nas operações portuárias?",
+        "opcoes": [
+          "Para manter o ambiente animado",
+          "Para evitar mal-entendidos que podem causar acidentes",
+          "Para saber a hora do almoço",
+          "Para escolher músicas durante o trabalho"
+        ],
+        "correta": 1,
+        "explicacao": "Boa comunicação reduz falhas e previne acidentes, garantindo um trabalho mais seguro e eficiente."
+      },
+      {
+        "texto": "Qual é a função do colete refletivo nas áreas portuárias?",
+        "opcoes": [
+          "Identificar quem é novo",
+          "Evitar que o trabalhador se molhe",
+          "Aumentar a visibilidade do trabalhador",
+          "Substituir o crachá"
+        ],
+        "correta": 2,
+        "explicacao": "O colete refletivo facilita a visualização dos trabalhadores, especialmente em locais com pouca luz ou tráfego de veículos."
+      },
+      {
+        "texto": "Qual é o risco de não utilizar calçados de segurança em áreas portuárias?",
+        "opcoes": [
+          "Pegar resfriado",
+          "Ficar descalço",
+          "Lesões nos pés por objetos pesados ou perfurantes",
+          "Deslizar na água"
+        ],
+        "correta": 2,
+        "explicacao": "Calçados de segurança evitam esmagamentos, perfurações e escorregões, comuns em áreas de carga e descarga."
+      },
+      {
+        "texto": "O que é um plano de emergência?",
+        "opcoes": [
+          "Lista de equipamentos",
+          "Plano para troca de turno",
+          "Procedimento de resposta a acidentes e situações de risco",
+          "Horário de entrada dos navios"
+        ],
+        "correta": 2,
+        "explicacao": "Plano de emergência orienta os trabalhadores sobre o que fazer em caso de incêndio, vazamento ou acidentes."
+      },
+      {
+        "texto": "O que é considerado comportamento seguro nas operações portuárias?",
+        "opcoes": [
+          "Fazer pausas sem autorização",
+          "Improvisar equipamentos",
+          "Seguir os procedimentos e utilizar os EPIs corretamente",
+          "Fazer corridas nas docas"
+        ],
+        "correta": 2,
+        "explicacao": "Seguir normas e usar os EPIs reduz riscos e garante segurança coletiva no porto."
+      },
+      {
+        "texto": "Quando deve ser realizada a manutenção preventiva de um equipamento?",
+        "opcoes": [
+          "Somente quando quebrar",
+          "Quando o operador quiser",
+          "Periodicamente, conforme orientação do fabricante",
+          "Quando o chefe pedir"
+        ],
+        "correta": 2,
+        "explicacao": "A manutenção preventiva evita falhas durante o uso e deve seguir os prazos definidos pelo fabricante."
+      },
+      {
+        "texto": "Qual a importância da pausa para descanso em atividades portuárias?",
+        "opcoes": [
+          "Diminuir a produtividade",
+          "Socializar com colegas",
+          "Reduzir o cansaço e prevenir acidentes por fadiga",
+          "Pegar sol"
+        ],
+        "correta": 2,
+        "explicacao": "O descanso evita a fadiga, que compromete a atenção e aumenta os riscos de acidentes."
+      },
+      {
+        "texto": "Por que não se deve correr nas áreas operacionais do porto?",
+        "opcoes": [
+          "Para não cansar demais",
+          "Para evitar atrapalhar os colegas",
+          "Para prevenir quedas e colisões",
+          "Porque o chão está quente"
+        ],
+        "correta": 2,
+        "explicacao": "Correr pode causar quedas ou choques com máquinas e veículos, sendo uma atitude insegura."
+      },
+      {
+        "texto": "Qual atitude é incorreta durante a conferência de carga?",
+        "opcoes": [
+          "Anotar irregularidades",
+          "Permanecer atento ao ambiente",
+          "Utilizar os EPIs",
+          "Desviar a atenção para o celular"
+        ],
+        "correta": 3,
+        "explicacao": "Distrações como o uso do celular comprometem a atenção e aumentam o risco de erro e acidentes."
+      },
+      {
+        "texto": "O que pode ocorrer se uma carga for mal amarrada?",
+        "opcoes": [
+          "Nada",
+          "A carga pode cair, gerando acidentes e prejuízos",
+          "A carga chega mais rápido",
+          "Aumenta a estabilidade"
+        ],
+        "correta": 1,
+        "explicacao": "Carga mal fixada pode se deslocar, cair ou danificar equipamentos, colocando vidas em risco."
+      },
+      {
+        "texto": "Quem pode operar equipamentos como empilhadeiras e guindastes?",
+        "opcoes": [
+          "Qualquer trabalhador disponível",
+          "Apenas operadores treinados e habilitados",
+          "Supervisores",
+          "Visitantes com autorização verbal"
+        ],
+        "correta": 1,
+        "explicacao": "Somente operadores com treinamento e habilitação legal podem operar máquinas pesadas com segurança."
+      },
+      {
+        "texto": "Qual é a forma correta de reportar um risco identificado no porto?",
+        "opcoes": [
+          "Ignorar, pois não é sua função",
+          "Comentar com colegas",
+          "Relatar ao responsável pela segurança imediatamente",
+          "Esperar alguém se acidentar para avisar"
+        ],
+        "correta": 2,
+        "explicacao": "Riscos devem ser comunicados imediatamente para que medidas preventivas sejam tomadas a tempo."
+      }
+    ]
+    
   
