@@ -132,8 +132,13 @@
       // Embaralhar as questões
       questoes = questoes.sort(() => 0.5 - Math.random());
 
+      // Exibir apenas as 10 primeiras
+      const questoesSelecionadas = questoes.slice(0, 10);
+
       const container = document.getElementById("questoes-container");
-      questoes.forEach((q, index) => {
+      container.innerHTML = ''; // Limpa antes de adicionar novas
+
+      questoesSelecionadas.forEach((q, index) => {
         const div = document.createElement("div");
         div.className = "questao";
         div.innerHTML = `
@@ -144,15 +149,14 @@
               ${opcao}
             </label>
           `).join('')}
-          <div class="explicacao" id="explicacao${index}">
-            <!-- Explicação da questão será adicionada aqui -->
-          </div>
+          <div class="explicacao" id="explicacao${index}"></div>
         `;
         container.appendChild(div);
       });
 
-      window.questoesAtuais = questoes;
+      window.questoesAtuais = questoesSelecionadas;
     }
+
 
     function corrigir() {
       const questoes = window.questoesAtuais;

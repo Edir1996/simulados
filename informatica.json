@@ -1,0 +1,244 @@
+[
+  {
+    "texto": "Em qual local do Windows é possível verificar as propriedades de um arquivo?",
+    "opcoes": ["Na área de trabalho", "No menu Iniciar", "Nas Propriedades do sistema", "Na pasta de arquivos"],
+    "correta": 3,
+    "explicacao": "Exemplo: Para verificar as propriedades de um arquivo, basta clicar com o botão direito sobre ele e selecionar 'Propriedades'."
+  },
+  {
+    "texto": "No Microsoft Word, qual comando é utilizado para salvar um documento com um novo nome?",
+    "opcoes": ["Ctrl + S", "Ctrl + Shift + S", "Ctrl + N", "Ctrl + O"],
+    "correta": 1,
+    "explicacao": "Exemplo: 'Ctrl + Shift + S' é o comando utilizado para salvar o documento com um novo nome ou em outro local."
+  },
+  {
+    "texto": "Qual a principal função do Excel?",
+    "opcoes": ["Criar apresentações de slides", "Criar gráficos e tabelas dinâmicas", "Editar textos", "Criar gráficos animados"],
+    "correta": 1,
+    "explicacao": "Exemplo: O Excel é utilizado principalmente para criar e manipular tabelas de dados e gráficos, além de realizar cálculos complexos."
+  },
+  {
+    "texto": "No PowerPoint, qual atalho é usado para iniciar a apresentação de slides?",
+    "opcoes": ["F5", "Ctrl + P", "Shift + S", "F2"],
+    "correta": 0,
+    "explicacao": "Exemplo: O atalho 'F5' é utilizado para iniciar a apresentação de slides no PowerPoint."
+  },
+  {
+    "texto": "Qual é o protocolo utilizado para enviar e-mails na Internet?",
+    "opcoes": ["FTP", "HTTP", "POP3", "SMTP"],
+    "correta": 3,
+    "explicacao": "Exemplo: SMTP (Simple Mail Transfer Protocol) é o protocolo usado para enviar e-mails."
+  },
+  {
+    "texto": "Em uma rede de computadores, qual é a função do 'roteador'?",
+    "opcoes": ["Armazenar arquivos", "Conectar diferentes redes", "Proteger a rede contra vírus", "Fazer backup de dados"],
+    "correta": 1,
+    "explicacao": "Exemplo: O roteador é responsável por direcionar o tráfego de dados entre diferentes redes de computadores."
+  },
+  {
+    "texto": "O que é um 'cookie' na Internet?",
+    "opcoes": ["Um tipo de vírus", "Uma forma de identificar e armazenar preferências do usuário", "Um tipo de e-mail", "Um software de segurança"],
+    "correta": 1,
+    "explicacao": "Exemplo: Cookies são pequenos arquivos armazenados no computador para lembrar as preferências de navegação do usuário."
+  },
+  {
+    "texto": "Qual comando do Windows é utilizado para exibir o Gerenciador de Tarefas?",
+    "opcoes": ["Ctrl + Esc", "Ctrl + Shift + Esc", "Alt + F4", "Windows + R"],
+    "correta": 1,
+    "explicacao": "Exemplo: O comando 'Ctrl + Shift + Esc' abre o Gerenciador de Tarefas, onde é possível ver e gerenciar os processos em execução."
+  },
+  {
+    "texto": "Em relação à segurança da informação, o que significa 'phishing'?",
+    "opcoes": ["Roubo físico de computadores", "Fraude online para roubar dados pessoais", "Criação de backups seguros", "Instalação de antivírus em dispositivos"],
+    "correta": 1,
+    "explicacao": "Exemplo: Phishing é uma técnica fraudulenta utilizada para enganar o usuário e roubar informações pessoais, como senhas e números de cartões."
+  },
+  {
+    "texto": "Qual dos seguintes atalhos é utilizado no Windows para abrir o menu 'Iniciar'?",
+    "opcoes": ["Ctrl + I", "Alt + F4", "Windows", "Ctrl + N"],
+    "correta": 2,
+    "explicacao": "Exemplo: O atalho 'Windows' é utilizado para abrir o menu Iniciar no sistema operacional Windows."
+  },
+  {
+    "texto": "Qual a principal função do sistema operacional Windows?",
+    "opcoes": ["Gerenciar o hardware e os programas do computador", "Criar apresentações", "Realizar cálculos complexos", "Enviar e-mails"],
+    "correta": 0,
+    "explicacao": "Exemplo: O Windows é um sistema operacional que gerencia o hardware, o software e as interações do usuário com o computador."
+  },
+  {
+    "texto": "No Microsoft Word, qual comando é utilizado para aplicar negrito ao texto?",
+    "opcoes": ["Ctrl + U", "Ctrl + B", "Ctrl + I", "Ctrl + N"],
+    "correta": 1,
+    "explicacao": "Exemplo: O atalho 'Ctrl + B' é utilizado para aplicar negrito ao texto no Word."
+  },
+  {
+    "texto": "No Excel, qual fórmula é usada para somar um intervalo de células?",
+    "opcoes": ["=SOMA()", "=SOMAÇÃO()", "=MÉDIA()", "=ADICIONAR()"],
+    "correta": 0,
+    "explicacao": "Exemplo: A fórmula '=SOMA()' é usada para somar um intervalo de células no Excel."
+  },
+  {
+    "texto": "Qual a principal vantagem de utilizar o armazenamento em nuvem (cloud storage)?",
+    "opcoes": ["Armazenar arquivos apenas no computador", "Acessar os arquivos de qualquer lugar com acesso à internet", "Armazenar arquivos apenas em dispositivos móveis", "Evitar o uso de backup"],
+    "correta": 1,
+    "explicacao": "Exemplo: O armazenamento em nuvem permite acessar arquivos de qualquer lugar e em qualquer dispositivo com conexão à internet."
+  },
+  {
+    "texto": "Qual é o atalho utilizado no Windows para copiar um arquivo?",
+    "opcoes": ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + A"],
+    "correta": 1,
+    "explicacao": "Exemplo: 'Ctrl + C' é o atalho utilizado para copiar um arquivo no Windows."
+  },
+  {
+    "texto": "O que significa a sigla 'VPN' no contexto de redes?",
+    "opcoes": ["Virtual Private Network", "Virtual Public Network", "Visual Personal Network", "Virtual Protected Network"],
+    "correta": 0,
+    "explicacao": "Exemplo: 'VPN' significa 'Virtual Private Network', uma rede privada virtual usada para garantir a segurança nas conexões de internet."
+  },
+  {
+    "texto": "O que é 'phishing' na segurança da informação?",
+    "opcoes": ["Roubo de hardware", "Fraude online com o intuito de obter dados sensíveis", "Instalação de malware", "Armazenamento de dados na nuvem"],
+    "correta": 1,
+    "explicacao": "Exemplo: Phishing é uma técnica de fraude online que tenta enganar o usuário para obter informações pessoais, como senhas e dados bancários."
+  },
+  {
+    "texto": "Qual é o comando utilizado no Windows para fechar uma janela?",
+    "opcoes": ["Alt + Tab", "Ctrl + W", "Ctrl + F4", "Ctrl + X"],
+    "correta": 2,
+    "explicacao": "Exemplo: O atalho 'Ctrl + F4' é utilizado para fechar a janela ativa no Windows."
+  },
+  {
+    "texto": "Qual comando é utilizado para inserir uma nova linha em uma célula do Excel?",
+    "opcoes": ["Ctrl + Enter", "Alt + Enter", "Shift + Enter", "Ctrl + Shift + Enter"],
+    "correta": 1,
+    "explicacao": "Exemplo: O comando 'Alt + Enter' é utilizado para inserir uma nova linha dentro de uma célula do Excel."
+  },
+  {
+    "texto": "Em relação à segurança da informação, qual a função de um antivírus?",
+    "opcoes": ["Prevenir quedas de energia", "Detectar e remover softwares maliciosos", "Armazenar dados", "Gerenciar redes"],
+    "correta": 1,
+    "explicacao": "Exemplo: O antivírus tem a função de detectar e remover softwares maliciosos (malware) de um dispositivo."
+  },
+
+  {
+    "texto": "No Windows, qual atalho é utilizado para renomear um arquivo?",
+    "opcoes": ["F2", "Ctrl + R", "Alt + Enter", "Ctrl + Shift + R"],
+    "correta": 0,
+    "explicacao": "Exemplo: Pressionando F2 com um arquivo selecionado, você pode alterar seu nome."
+  },
+  {
+    "texto": "O que acontece ao pressionar Ctrl + Z em um editor de texto?",
+    "opcoes": ["Refaz a última ação", "Salva o documento", "Desfaz a última ação", "Seleciona todo o texto"],
+    "correta": 2,
+    "explicacao": "Exemplo: 'Ctrl + Z' é utilizado para desfazer a última ação realizada."
+  },
+  {
+    "texto": "Qual programa do pacote Office é ideal para criar apresentações?",
+    "opcoes": ["Excel", "Word", "PowerPoint", "Access"],
+    "correta": 2,
+    "explicacao": "Exemplo: O PowerPoint é usado para criar slides e apresentações visuais."
+  },
+  {
+    "texto": "O que é um 'firewall' em um computador?",
+    "opcoes": ["Um programa para edição de vídeos", "Um antivírus avançado", "Uma proteção contra acessos não autorizados", "Uma ferramenta para criar senhas"],
+    "correta": 2,
+    "explicacao": "Exemplo: O firewall funciona como uma barreira que protege o computador de acessos externos indesejados."
+  },
+  {
+    "texto": "O que é necessário para se conectar a uma rede Wi-Fi?",
+    "opcoes": ["Somente o IP do roteador", "O nome e a senha da rede", "Antivírus instalado", "Permissão do administrador do Windows"],
+    "correta": 1,
+    "explicacao": "Exemplo: Para conectar-se a uma rede Wi-Fi, é preciso conhecer o nome (SSID) e a senha da rede."
+  },
+  {
+    "texto": "O que é um sistema operacional?",
+    "opcoes": ["Um tipo de antivírus", "Um programa que controla o funcionamento do computador", "Uma linguagem de programação", "Uma planilha eletrônica"],
+    "correta": 1,
+    "explicacao": "Exemplo: O sistema operacional gerencia os recursos do computador, como o Windows, macOS ou Linux."
+  },
+  {
+    "texto": "Qual tecla é usada para atualizar uma página da internet?",
+    "opcoes": ["F2", "F5", "F11", "Esc"],
+    "correta": 1,
+    "explicacao": "Exemplo: Pressionar F5 recarrega a página atual no navegador."
+  },
+  {
+    "texto": "Qual programa do Office é usado para banco de dados?",
+    "opcoes": ["Excel", "Word", "Access", "PowerPoint"],
+    "correta": 2,
+    "explicacao": "Exemplo: O Microsoft Access é utilizado para criar e gerenciar bancos de dados relacionais."
+  },
+  {
+    "texto": "O que significa 'upload'?",
+    "opcoes": ["Baixar um arquivo da internet", "Remover um arquivo do sistema", "Enviar um arquivo para a internet", "Editar um arquivo online"],
+    "correta": 2,
+    "explicacao": "Exemplo: 'Upload' é o envio de arquivos do seu computador para a internet."
+  },
+  {
+    "texto": "O que é 'backup'?",
+    "opcoes": ["Atualização do sistema", "Instalação de programas", "Cópia de segurança dos dados", "Criação de redes"],
+    "correta": 2,
+    "explicacao": "Exemplo: Backup é uma cópia de segurança dos dados para evitar perdas em caso de falhas."
+  },
+  {
+    "texto": "Qual navegador é desenvolvido pela Microsoft?",
+    "opcoes": ["Chrome", "Firefox", "Opera", "Edge"],
+    "correta": 3,
+    "explicacao": "Exemplo: O Microsoft Edge é o navegador desenvolvido pela Microsoft."
+  },
+  {
+    "texto": "O que acontece ao pressionar Alt + Tab no Windows?",
+    "opcoes": ["Fecha a janela atual", "Minimiza todas as janelas", "Alterna entre janelas abertas", "Desliga o computador"],
+    "correta": 2,
+    "explicacao": "Exemplo: Alt + Tab permite alternar entre programas/janelas abertos no Windows."
+  },
+  {
+    "texto": "Qual dispositivo é usado para entrada de dados por voz?",
+    "opcoes": ["Monitor", "Impressora", "Microfone", "Mouse"],
+    "correta": 2,
+    "explicacao": "Exemplo: O microfone capta a voz do usuário e a envia ao computador."
+  },
+  {
+    "texto": "O que é uma planilha eletrônica?",
+    "opcoes": ["Editor de texto", "Sistema operacional", "Aplicativo para organizar dados e cálculos", "Navegador de internet"],
+    "correta": 2,
+    "explicacao": "Exemplo: Planilhas eletrônicas, como no Excel, são usadas para cálculos e organização de dados."
+  },
+  {
+    "texto": "Qual o objetivo de um antivírus?",
+    "opcoes": ["Criar redes", "Aumentar a velocidade da internet", "Proteger contra ameaças virtuais", "Imprimir documentos"],
+    "correta": 2,
+    "explicacao": "Exemplo: O antivírus identifica e remove ameaças como vírus, malwares e trojans."
+  },
+  {
+    "texto": "No Word, como se aplica itálico ao texto?",
+    "opcoes": ["Ctrl + B", "Ctrl + U", "Ctrl + I", "Ctrl + T"],
+    "correta": 2,
+    "explicacao": "Exemplo: O atalho Ctrl + I aplica o estilo itálico ao texto selecionado."
+  },
+  {
+    "texto": "O que é a 'lixeira' no sistema Windows?",
+    "opcoes": ["Local para salvar documentos importantes", "Área para jogos", "Área onde arquivos excluídos ficam temporariamente", "Ferramenta para instalar programas"],
+    "correta": 2,
+    "explicacao": "Exemplo: Arquivos excluídos são enviados para a lixeira antes da exclusão definitiva."
+  },
+  {
+    "texto": "Qual é o principal uso do Microsoft Outlook?",
+    "opcoes": ["Editar textos", "Enviar e gerenciar e-mails", "Criar planilhas", "Acessar redes sociais"],
+    "correta": 1,
+    "explicacao": "Exemplo: O Outlook é usado principalmente para gerenciar e-mails, contatos e calendários."
+  },
+  {
+    "texto": "Qual tecla deve ser usada para selecionar todos os itens em um documento?",
+    "opcoes": ["Ctrl + S", "Ctrl + C", "Ctrl + A", "Ctrl + V"],
+    "correta": 2,
+    "explicacao": "Exemplo: Ctrl + A seleciona todo o conteúdo de um documento ou pasta."
+  },
+  {
+    "texto": "Qual das opções representa um exemplo de URL?",
+    "opcoes": ["192.168.0.1", "www.google.com", "C:\\Meus Documentos", "HTTP"],
+    "correta": 1,
+    "explicacao": "Exemplo: 'www.google.com' é uma URL, que representa o endereço de um site na web."
+  }
+]
+
