@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulado - Matemática</title>
   <style>
     * {
@@ -124,7 +125,7 @@
   </form>
 
   <script>
-    const questoes = [
+      const questoes = [
       {
         texto: "1 + 2 × 3 é igual a:",
         opcoes: ["9", "7", "5", "6"],
@@ -248,51 +249,52 @@
     ];
 
 
-    const container = document.getElementById("questoes-container");
+
+  const container = document.getElementById("questoes-container");
+  questoes.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "questao";
+    div.id = `questao${i}`;
+    div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
+      q.opcoes.map((opt, j) =>
+        `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
+      ).join('') +
+      `<div class="explicacao">${q.explicacao}</div>`;
+    container.appendChild(div);
+  });
+
+  function corrigir() {
+    let acertos = 0;
+
     questoes.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "questao";
-      div.id = `questao${i}`;
-      div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
-        q.opcoes.map((opt, j) =>
-          `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
-        ).join('') +
-        `<div class="explicacao">${q.explicacao}</div>`;
-      container.appendChild(div);
+      const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+      const questaoDiv = document.getElementById(`questao${i}`);
+      const msg = document.createElement("div");
+      const explicacao = questaoDiv.querySelector(".explicacao");
+
+      // Exibe a explicação
+      if (explicacao) {
+        explicacao.style.display = "block";
+      }
+
+      if (resposta && parseInt(resposta.value) === q.correta) {
+        acertos++;
+        msg.className = "acerto";
+        msg.innerText = "✅ Resposta correta";
+      } else {
+        msg.className = "erro";
+        msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
+      }
+
+      if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
+        questaoDiv.appendChild(msg);
+      }
     });
 
-    function corrigir() {
-      let acertos = 0;
+    document.getElementById("resultado").innerText =
+      `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
+  }
 
-      questoes.forEach((q, i) => {
-        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
-        const questaoDiv = document.getElementById(`questao${i}`);
-        const msg = document.createElement("div");
-        const explicacao = questaoDiv.querySelector(".explicacao");
-
-        // Exibe a explicação
-        if (explicacao) {
-          explicacao.style.display = "block";
-        }
-
-        if (resposta && parseInt(resposta.value) === q.correta) {
-          acertos++;
-          msg.className = "acerto";
-          msg.innerText = "✅ Resposta correta";
-        } else {
-          msg.className = "erro";
-          msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
-        }
-
-        if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
-          questaoDiv.appendChild(msg);
-        }
-      });
-
-      document.getElementById("resultado").innerText =
-        `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
-    }
-
-  </script>
+</script>
 </body>
 </html>
