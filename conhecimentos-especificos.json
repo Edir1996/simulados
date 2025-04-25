@@ -1,0 +1,223 @@
+[
+    {
+      "texto": "Qual a função principal da empilhadeira na área portuária?",
+      "opcoes": [
+        "Transportar pessoas de um lado para o outro",
+        "Elevar e movimentar cargas em paletes ou contêineres",
+        "Fiscalizar o uso de EPI",
+        "Abrir e fechar contêineres"
+      ],
+      "correta": 1,
+      "explicacao": "A empilhadeira é usada para movimentar cargas unitizadas como paletes e contêineres dentro do porto ou armazém."
+    },
+    {
+      "texto": "Qual destes equipamentos é utilizado para içar cargas pesadas por meio de cabos de aço?",
+      "opcoes": [
+        "Guindaste",
+        "Caminhão",
+        "Empilhadeira manual",
+        "Paleteira"
+      ],
+      "correta": 0,
+      "explicacao": "O guindaste é um equipamento de grande porte utilizado para içar cargas pesadas com auxílio de cabos."
+    },
+    {
+      "texto": "O que significa capatazia no contexto portuário?",
+      "opcoes": [
+        "Atendimento ao cliente",
+        "Serviço de movimentação de cargas nos portos, incluindo carga e descarga",
+        "Venda de passagens marítimas",
+        "Limpeza do cais"
+      ],
+      "correta": 1,
+      "explicacao": "Capatazia refere-se às atividades de carga, descarga, arrumação e conferência de mercadorias no porto."
+    },
+    {
+      "texto": "Qual o principal objetivo do uso de EPIs?",
+      "opcoes": [
+        "Substituir o uniforme",
+        "Proteger o trabalhador contra riscos à sua saúde e integridade física",
+        "Controlar o horário de trabalho",
+        "Garantir produtividade"
+      ],
+      "correta": 1,
+      "explicacao": "Os Equipamentos de Proteção Individual (EPIs) são essenciais para a segurança e saúde do trabalhador."
+    },
+    {
+      "texto": "O que é obrigatório antes de iniciar a operação de um equipamento de carga?",
+      "opcoes": [
+        "Ligar o motor rapidamente",
+        "Fazer uma inspeção de segurança do equipamento",
+        "Carregar com carga máxima",
+        "Testar o rádio comunicador"
+      ],
+      "correta": 1,
+      "explicacao": "Antes de operar, é necessário fazer a inspeção visual e funcional do equipamento para garantir que está em condições seguras de uso."
+    },
+    {
+      "texto": "Qual destes EPIs é indispensável em áreas de movimentação de carga?",
+      "opcoes": [
+        "Sandálias de borracha",
+        "Chapéu de palha",
+        "Capacete de segurança",
+        "Gravata"
+      ],
+      "correta": 2,
+      "explicacao": "O capacete de segurança protege a cabeça contra impactos com objetos e é obrigatório nas áreas de operação."
+    },
+    {
+      "texto": "Qual das alternativas representa um risco comum em operações portuárias?",
+      "opcoes": [
+        "Falta de água potável",
+        "Queda de objetos e esmagamento",
+        "Barulho do mar",
+        "Brisa marítima"
+      ],
+      "correta": 1,
+      "explicacao": "A movimentação constante de cargas e equipamentos pesados gera riscos como quedas de objetos e esmagamento."
+    },
+    {
+      "texto": "De acordo com normas de segurança, o cinto de segurança tipo paraquedista é utilizado em qual situação?",
+      "opcoes": [
+        "Em locais de grande calor",
+        "Para dirigir empilhadeiras",
+        "Em trabalhos em altura",
+        "Durante intervalos"
+      ],
+      "correta": 2,
+      "explicacao": "O cinto de segurança tipo paraquedista é obrigatório em atividades realizadas a mais de 2 metros de altura."
+    },
+    {
+      "texto": "O que se entende por logística portuária?",
+      "opcoes": [
+        "Organização de festas náuticas",
+        "Atividades de fiscalização da polícia portuária",
+        "Gestão do fluxo de cargas, documentos e informações no porto",
+        "Compra de equipamentos"
+      ],
+      "correta": 2,
+      "explicacao": "Logística portuária envolve planejamento e controle do fluxo de mercadorias, documentos e transporte dentro do ambiente portuário."
+    },
+    {
+      "texto": "Qual é a primeira medida em caso de acidente de trabalho no porto?",
+      "opcoes": [
+        "Ocultar o ocorrido",
+        "Levar o trabalhador ao bar mais próximo",
+        "Acionar os serviços de emergência e comunicar o superior",
+        "Anotar em um caderno e continuar"
+      ],
+      "correta": 2,
+      "explicacao": "Em caso de acidente, a prioridade é prestar socorro e acionar os serviços médicos, informando a liderança imediatamente."
+    },
+    {
+      "texto": "O que é considerado um EPI?",
+      "opcoes": [
+        "Carrinho de carga",
+        "Máscara de proteção respiratória",
+        "Rádio transmissor",
+        "Maçarico"
+      ],
+      "correta": 1,
+      "explicacao": "Máscaras de proteção respiratória são EPIs essenciais em ambientes com poeira ou vapores tóxicos."
+    },
+    {
+      "texto": "O uso inadequado de EPIs pode resultar em:",
+      "opcoes": [
+        "Promoção",
+        "Multa ao trabalhador e à empresa",
+        "Liberação para ir embora mais cedo",
+        "Aumento de salário"
+      ],
+      "correta": 1,
+      "explicacao": "A negligência no uso de EPIs pode gerar multas, punições e acidentes graves no ambiente de trabalho."
+    },
+    {
+      "texto": "O que deve ser feito antes de movimentar uma carga suspensa com guindaste?",
+      "opcoes": [
+        "Acionar a buzina do guindaste",
+        "Garantir que não haja ninguém na área sob a carga",
+        "Acelerar o processo para ganhar tempo",
+        "Desligar o sistema de freio"
+      ],
+      "correta": 1,
+      "explicacao": "É essencial garantir que não haja trabalhadores sob a área de movimentação da carga para evitar acidentes."
+    },
+    {
+      "texto": "Quem é o responsável por fornecer os EPIs adequados ao trabalhador?",
+      "opcoes": [
+        "Sindicato",
+        "OGMO",
+        "Empregador ou OGMO",
+        "Próprio trabalhador"
+      ],
+      "correta": 2,
+      "explicacao": "O fornecimento dos EPIs é obrigação do empregador ou OGMO, conforme a legislação trabalhista."
+    },
+    {
+      "texto": "O que significa a sigla CIPA no contexto da segurança do trabalho?",
+      "opcoes": [
+        "Comissão Interna de Prevenção de Acidentes",
+        "Cadastro de Instrução Portuária Avançada",
+        "Controle Integrado de Portos e Armazéns",
+        "Certificação de Itens de Proteção Ambiental"
+      ],
+      "correta": 0,
+      "explicacao": "A CIPA é responsável por promover ações para prevenção de acidentes e doenças no ambiente de trabalho."
+    },
+    {
+      "texto": "Qual atitude é considerada correta durante a operação de equipamentos portuários?",
+      "opcoes": [
+        "Utilizar o celular enquanto opera",
+        "Fumar durante a movimentação de carga",
+        "Manter atenção total à operação e seguir os procedimentos",
+        "Conversar com colegas enquanto opera"
+      ],
+      "correta": 2,
+      "explicacao": "A operação de equipamentos exige atenção total, sendo proibido distrações ou atitudes que comprometam a segurança."
+    },
+    {
+      "texto": "A sinalização de segurança tem qual função nos portos?",
+      "opcoes": [
+        "Enfeitar o ambiente",
+        "Promover marcas comerciais",
+        "Informar e alertar os trabalhadores sobre riscos e procedimentos",
+        "Indicar promoções"
+      ],
+      "correta": 2,
+      "explicacao": "A sinalização orienta os trabalhadores quanto aos riscos, rotas de fuga e uso de EPIs, prevenindo acidentes."
+    },
+    {
+      "texto": "Qual o nome do documento que deve ser emitido após um acidente de trabalho?",
+      "opcoes": [
+        "Atestado médico comum",
+        "Boletim informativo",
+        "CAT (Comunicação de Acidente de Trabalho)",
+        "Aviso de ausência"
+      ],
+      "correta": 2,
+      "explicacao": "A CAT é o documento oficial que registra o acidente de trabalho para fins previdenciários e legais."
+    },
+    {
+      "texto": "Quando é permitido movimentar uma carga com pessoas por perto?",
+      "opcoes": [
+        "Sempre que for urgente",
+        "Nunca. A área deve estar isolada",
+        "Se a carga for leve",
+        "Se a carga estiver bem amarrada"
+      ],
+      "correta": 1,
+      "explicacao": "Nunca se deve movimentar cargas com pessoas na área de risco. A zona deve ser isolada para garantir segurança."
+    },
+    {
+      "texto": "Durante a operação com empilhadeira, qual é a atitude incorreta?",
+      "opcoes": [
+        "Manter a carga estável",
+        "Dirigir com velocidade compatível",
+        "Transportar pessoas na empilhadeira",
+        "Fazer manobras suaves"
+      ],
+      "correta": 2,
+      "explicacao": "Empilhadeiras são para transporte de carga, não de pessoas. Isso representa alto risco de acidente."
+    }
+  ]
+  
