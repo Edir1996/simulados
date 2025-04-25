@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulado - Língua Portuguesa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .questao {
+      background: #fff;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .explicacao {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+      display: none; /* Oculta por padrão */
+    }
+
+    .resultado {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .erro {
+      color: red;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    .acerto {
+      color: green;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simulado - Língua Portuguesa</h1>
+  <form id="prova">
+    <div id="questoes-container"></div>
+    <button type="button" onclick="corrigir()">Corrigir Prova</button>
+    <p class="resultado" id="resultado"></p>
+  </form>
+
+  <script>
+    const questoes = [
+      {
+        texto: "Qual a forma correta de utilização do 'a' e 'há'?",
+        opcoes: ["'A' indica tempo passado e 'há' é utilizado para indicar tempo futuro.", "'A' indica tempo futuro e 'há' indica tempo passado.", "'A' é usado para indicar lugar, e 'há' indica tempo.", "'A' é utilizado para indicar tempo e 'há' para indicar lugar."],
+        correta: 2,
+        explicacao: "Exemplo: 'A' é usado para indicar lugar, como em 'Vou a escola', enquanto 'há' é utilizado para indicar tempo, como em 'Há muito tempo'."
+      },
+      {
+        texto: "Qual palavra está corretamente acentuada?",
+        opcoes: ["Pára-quedas", "Pera", "Pé", "Pêra"],
+        correta: 3,
+        explicacao: "Exemplo: 'Pêra' é a forma correta quando se refere à fruta, pois é uma palavra proparoxítona, que sempre é acentuada."
+      },
+      {
+        texto: "Qual é o correto uso da vírgula?",
+        opcoes: ["Ela comprou pão, leite, e frutas.", "Ela, comprou pão leite e frutas.", "Ela comprou, pão leite e frutas.", "Ela comprou pão, leite e frutas."],
+        correta: 3,
+        explicacao: "Exemplo: Na lista de itens, a vírgula deve ser utilizada para separar os elementos, mas não antes da última conjunção (e)."
+      },
+      {
+        texto: "Qual frase está incorreta em relação ao uso de pronomes?",
+        opcoes: ["Ela viu a mim.", "Ela viu a Maria.", "Ela viu me.", "Ela viu-me."],
+        correta: 2,
+        explicacao: "Exemplo: 'Ela viu-me' é a forma correta, pois o pronome oblíquo átono deve vir antes do verbo ou ligado diretamente a ele."
+      },
+      {
+        texto: "Qual é a alternativa com erro de concordância verbal?",
+        opcoes: ["Nós fomos ao cinema.", "Eles vai ao cinema.", "Ela canta muito bem.", "Você trabalha muito."],
+        correta: 1,
+        explicacao: "Exemplo: O verbo 'ir' deve concordar com o sujeito. 'Eles vai' está errado, o correto é 'Eles vão'."
+      },
+      {
+        texto: "Qual das palavras está escrita corretamente?",
+        opcoes: ["Exceção", "Exeção", "Exessão", "Exceção"],
+        correta: 0,
+        explicacao: "Exemplo: A palavra correta é 'exceção', com 'c', que significa algo que foge da regra."
+      },
+      {
+        texto: "Em qual frase está incorreto o uso do 'por que'?",
+        opcoes: ["Por que você está triste?", "Não sei por que ele fez isso.", "Eu me pergunto por que ela não respondeu.", "Você sabe por que não a vi?"],
+        correta: 0,
+        explicacao: "Exemplo: 'Por que' separado e com acento é usado para perguntar, como na frase 'Por que você está triste?'"
+      },
+      {
+        texto: "Qual o significado da palavra 'inefável'?",
+        opcoes: ["Que não pode ser explicado", "Que é muito bom", "Que é extremamente triste", "Que é muito bonito"],
+        correta: 0,
+        explicacao: "Exemplo: 'Inefável' significa algo que não pode ser descrito ou explicado, algo indescritível."
+      },
+      {
+        texto: "Qual a alternativa correta em relação ao uso de crase?",
+        opcoes: ["Vou à escola", "Vou a escola", "Vou a escola", "Vou à escola"],
+        correta: 0,
+        explicacao: "Exemplo: Usa-se crase quando a preposição 'a' se encontra com o artigo definido feminino 'a'."
+      },
+      {
+        texto: "Qual é a alternativa que apresenta uma conjunção subordinativa?",
+        opcoes: ["E", "Mas", "Porque", "Ou"],
+        correta: 2,
+        explicacao: "Exemplo: A palavra 'porque' é uma conjunção subordinativa causal, usada para explicar a razão de algo."
+      },
+      {
+        texto: "Qual frase está correta em relação ao uso de 'mau' e 'mal'?",
+        opcoes: ["Ele fez um mal trabalho.", "Ele fez um mau trabalho.", "Ele está mal.", "Ele está mau."],
+        correta: 1,
+        explicacao: "Exemplo: 'Mau' é o contrário de 'bom', e 'mal' é o contrário de 'bem'. Portanto, a forma correta é 'mau' para qualificar algo ruim."
+      },
+      {
+        texto: "Qual é o erro na frase 'Fui à escola e encontrei-a com meu amigo'?",
+        opcoes: ["Uso incorreto de crase", "Uso incorreto do pronome 'a'", "Erro na concordância verbal", "Erro na concordância nominal"],
+        correta: 1,
+        explicacao: "Exemplo: O pronome 'a' não deve ser usado depois de 'encontrei', pois o verbo já exige o uso do pronome pessoal direto."
+      },
+      {
+        texto: "Qual alternativa apresenta uma palavra com grafia errada?",
+        opcoes: ["Cuidado", "Verdadeiro", "Receber", "Desisitivo"],
+        correta: 3,
+        explicacao: "Exemplo: 'Desisitivo' é escrito de forma incorreta. A forma correta é 'decisivo'."
+      },
+      {
+        texto: "Qual a forma correta do plural de 'alumínio'?",
+        opcoes: ["Alumínios", "Alumínias", "Alumíno", "Alumíneos"],
+        correta: 0,
+        explicacao: "Exemplo: O plural de 'alumínio' é 'alumínios', seguindo a regra de plural para palavras terminadas em 'o'."
+      },
+      {
+        texto: "Qual alternativa apresenta uma frase sem erro de concordância verbal?",
+        opcoes: ["Aqueles meninos correm rápido.", "Aquelas meninas correm rápido.", "Aquele menino correm rápido.", "Aqueles menino corre rápido."],
+        correta: 1,
+        explicacao: "Exemplo: 'Aquelas meninas correm rápido' está correto, pois o sujeito e o verbo estão no plural."
+      },
+      {
+        texto: "Qual a frase correta em relação ao uso de 'onde' e 'aonde'?",
+        opcoes: ["Vou aonde você for.", "Vou onde você for.", "Aonde eu fui.", "Onde eu fui."],
+        correta: 0,
+        explicacao: "Exemplo: Usa-se 'aonde' quando há ideia de movimento. A frase correta é 'Vou aonde você for'."
+      },
+      {
+        texto: "Qual frase está correta em relação à utilização do 'por que' e 'porque'?",
+        opcoes: ["Não sei por que ela saiu.", "Não sei por que ela sair.", "Não sei porque ela saiu.", "Não sei por que ela sair."],
+        correta: 0,
+        explicacao: "Exemplo: 'Por que' é usado para perguntas diretas ou indiretas, enquanto 'porque' é usado para responder ou explicar algo."
+      },
+      {
+        texto: "Qual palavra está corretamente acentuada?",
+        opcoes: ["Ideia", "Campeão", "Feijões", "Hippie"],
+        correta: 1,
+        explicacao: "Exemplo: 'Campeão' é uma palavra paroxítona terminada em 'ão', e por isso é acentuada."
+      },
+      {
+        texto: "Em qual frase há erro de regência verbal?",
+        opcoes: ["Eu assisti a palestra.", "Eu assisti ao filme.", "Ela foi ao cinema.", "Eu ouvi o som da música."],
+        correta: 0,
+        explicacao: "Exemplo: 'Assistir' exige a preposição 'a'. A forma correta seria 'Eu assisti à palestra'."
+      },
+      {
+        texto: "Qual é o significado da palavra 'estranho'?",
+        opcoes: ["Algo incomum", "Algo fácil", "Algo agradável", "Algo normal"],
+        correta: 0,
+        explicacao: "Exemplo: 'Estranho' significa algo incomum ou que causa estranheza."
+      }
+    ];
+
+  
+
+    const container = document.getElementById("questoes-container");
+    questoes.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "questao";
+      div.id = `questao${i}`;
+      div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
+        q.opcoes.map((opt, j) =>
+          `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
+        ).join('') +
+        `<div class="explicacao">${q.explicacao}</div>`;
+      container.appendChild(div);
+    });
+
+    function corrigir() {
+      let acertos = 0;
+
+      questoes.forEach((q, i) => {
+        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+        const questaoDiv = document.getElementById(`questao${i}`);
+        const msg = document.createElement("div");
+        const explicacao = questaoDiv.querySelector(".explicacao");
+
+        // Exibe a explicação
+        if (explicacao) {
+          explicacao.style.display = "block";
+        }
+
+        if (resposta && parseInt(resposta.value) === q.correta) {
+          acertos++;
+          msg.className = "acerto";
+          msg.innerText = "✅ Resposta correta";
+        } else {
+          msg.className = "erro";
+          msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
+        }
+
+        if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
+          questaoDiv.appendChild(msg);
+        }
+      });
+
+      document.getElementById("resultado").innerText =
+        `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
+    }
+
+  </script>
+</body>
+</html>

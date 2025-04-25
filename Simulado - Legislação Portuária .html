@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulado - Legislação Portuária</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .questao {
+      background: #fff;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .explicacao {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+      display: none; /* Oculta por padrão */
+    }
+
+    .resultado {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .erro {
+      color: red;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    .acerto {
+      color: green;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simulado - Legislação Portuária</h1>
+  <form id="prova">
+    <div id="questoes-container"></div>
+    <button type="button" onclick="corrigir()">Corrigir Prova</button>
+    <p class="resultado" id="resultado"></p>
+  </form>
+
+  <script>
+      const questoes = [
+    {
+      texto: "Qual é o principal objetivo da Lei nº 12.815/2013?",
+      opcoes: [
+        "Estabelecer normas de segurança para embarcações",
+        "Regular as atividades dos terminais pesqueiros",
+        "Disciplinar a exploração dos portos organizados e instalações portuárias",
+        "Criar novas empresas portuárias públicas"
+      ],
+      correta: 2,
+      explicacao: "A Lei nº 12.815/2013 regulamenta a exploração dos portos organizados e das instalações portuárias, modernizando a gestão portuária."
+    },
+    {
+      texto: "Segundo a Lei dos Portos, o que é considerado porto organizado?",
+      opcoes: [
+        "Um porto com fins militares",
+        "Um porto administrado pela iniciativa privada",
+        "O porto cuja infraestrutura pertence à União e é explorado diretamente ou mediante concessão",
+        "Um terminal pesqueiro público"
+      ],
+      correta: 2,
+      explicacao: "Porto organizado é aquele cuja infraestrutura é pública, pertencente à União e pode ser explorado por concessão ou delegação."
+    },
+    {
+      texto: "Qual órgão é responsável por organizar a escala de trabalho dos trabalhadores portuários avulsos?",
+      opcoes: [
+        "Sindicato",
+        "OGMO",
+        "Ministério da Infraestrutura",
+        "ANTT"
+      ],
+      correta: 1,
+      explicacao: "O OGMO (Órgão Gestor de Mão de Obra) é responsável pela organização da escala de trabalho dos trabalhadores portuários avulsos."
+    },
+    {
+      texto: "O trabalhador portuário avulso tem direito a quais benefícios?",
+      opcoes: [
+        "Apenas alimentação",
+        "Salário fixo mensal",
+        "Todos os direitos da legislação trabalhista, como férias, 13º e FGTS proporcional",
+        "Não tem direito a nenhum benefício"
+      ],
+      correta: 2,
+      explicacao: "O trabalhador portuário avulso tem direitos como qualquer outro trabalhador, com proporcionalidade conforme a quantidade de trabalho executado."
+    },
+    {
+      texto: "Conforme a Lei nº 12.815/2013, quem pode ser operador portuário?",
+      opcoes: [
+        "Somente empresas públicas",
+        "Somente trabalhadores autônomos",
+        "Qualquer empresa habilitada pela Antaq e autorizada pelo administrador do porto",
+        "Apenas cooperativas de trabalhadores"
+      ],
+      correta: 2,
+      explicacao: "Operadores portuários devem ser empresas habilitadas e autorizadas conforme as exigências da Antaq e da autoridade portuária."
+    },
+    {
+      texto: "Qual é o papel da Convenção Coletiva de Trabalho no setor portuário?",
+      opcoes: [
+        "Determinar os impostos pagos pelos trabalhadores",
+        "Estabelecer regras e condições de trabalho entre sindicatos e OGMO/empresas",
+        "Controlar o tráfego de navios",
+        "Fiscalizar os operadores portuários"
+      ],
+      correta: 1,
+      explicacao: "A Convenção Coletiva define normas complementares de trabalho, salários, segurança e direitos específicos entre trabalhadores e empregadores."
+    },
+    {
+      texto: "De acordo com as normas da OGMO, qual é um dever do trabalhador portuário avulso?",
+      opcoes: [
+        "Faltar ao serviço sempre que desejar",
+        "Desobedecer ordens operacionais",
+        "Apresentar-se para o trabalho com regularidade e cumprir as escalas",
+        "Cobrar diretamente do navio pelo serviço"
+      ],
+      correta: 2,
+      explicacao: "O trabalhador portuário avulso deve cumprir com regularidade as escalas de trabalho organizadas pelo OGMO."
+    },
+    {
+      texto: "O que acontece com o trabalhador portuário avulso que recusa constantemente o trabalho sem justificativa?",
+      opcoes: [
+        "Recebe um prêmio",
+        "Pode ser descredenciado do OGMO",
+        "É promovido a operador portuário",
+        "Não sofre consequência"
+      ],
+      correta: 1,
+      explicacao: "Conforme regras da OGMO e da convenção, a recusa injustificada frequente pode resultar no descredenciamento do trabalhador."
+    },
+    {
+      texto: "Qual é a validade da Convenção Coletiva de Trabalho 2024/2026?",
+      opcoes: [
+        "1 ano",
+        "2 anos",
+        "3 anos",
+        "Indeterminada"
+      ],
+      correta: 1,
+      explicacao: "A Convenção Coletiva de Trabalho tem vigência de dois anos, compreendendo 2024 até 2026."
+    },
+    {
+      texto: "De acordo com a Lei dos Portos, quem é responsável pela segurança nas áreas portuárias?",
+      opcoes: [
+        "A OGMO",
+        "A Guarda Portuária",
+        "Os sindicatos",
+        "Os trabalhadores avulsos"
+      ],
+      correta: 1,
+      explicacao: "A segurança das áreas portuárias é responsabilidade da Guarda Portuária, atuando conforme regulamentação específica."
+    },
+    {
+      texto: "Qual o objetivo principal do OGMO?",
+      opcoes: [
+        "Administrar os portos brasileiros",
+        "Oferecer formação profissional aos trabalhadores e gerenciar a mão de obra avulsa",
+        "Vender cargas internacionais",
+        "Fiscalizar a Receita Federal"
+      ],
+      correta: 1,
+      explicacao: "O OGMO gerencia a mão de obra avulsa, realiza escalação e promove qualificação dos trabalhadores portuários."
+    },
+    {
+      texto: "Segundo a Lei nº 12.815/2013, como deve ser feita a contratação de trabalhadores avulsos?",
+      opcoes: [
+        "Diretamente com o capitão do navio",
+        "Por meio do OGMO",
+        "Com autorização do sindicato",
+        "Por intermédio da ANTAQ"
+      ],
+      correta: 1,
+      explicacao: "A contratação de trabalhadores avulsos deve ser feita exclusivamente através do OGMO."
+    },
+    {
+      texto: "O que a Convenção Coletiva de Trabalho 2024/2026 define sobre intervalos para refeição?",
+      opcoes: [
+        "Que o trabalhador pode almoçar durante a operação",
+        "Que não há necessidade de pausa",
+        "Estabelece os horários e a obrigatoriedade dos intervalos conforme a jornada",
+        "É proibido sair da área do porto"
+      ],
+      correta: 2,
+      explicacao: "A Convenção estabelece os direitos ao intervalo para refeição de acordo com a carga horária de trabalho."
+    },
+    {
+      texto: "Qual é o direito do trabalhador portuário avulso em caso de acidente de trabalho?",
+      opcoes: [
+        "Não tem nenhum direito",
+        "Apenas uma ajuda de custo do sindicato",
+        "Tem direito ao auxílio-doença acidentário e estabilidade",
+        "Recebe apenas um atestado informal"
+      ],
+      correta: 2,
+      explicacao: "O trabalhador portuário avulso acidentado tem direito ao benefício previdenciário e à estabilidade enquanto estiver afastado."
+    },
+    {
+      texto: "O que é exigido para o trabalhador atuar como portuário avulso?",
+      opcoes: [
+        "Apenas ser maior de idade",
+        "Estar cadastrado no OGMO e ter qualificação específica",
+        "Ter ensino superior",
+        "Ser servidor público"
+      ],
+      correta: 1,
+      explicacao: "É obrigatório o cadastro no OGMO e possuir formação específica para atuar como trabalhador portuário avulso."
+    },
+    {
+      texto: "A quem compete fiscalizar o cumprimento das normas trabalhistas nos portos?",
+      opcoes: [
+        "Sindicato",
+        "OGMO",
+        "Auditores Fiscais do Trabalho (MTE)",
+        "Autoridade Marítima"
+      ],
+      correta: 2,
+      explicacao: "A fiscalização trabalhista é feita por Auditores do Ministério do Trabalho e Emprego."
+    },
+    {
+      texto: "O que é carga geral, conforme a Lei dos Portos?",
+      opcoes: [
+        "Qualquer carga transportada por navio",
+        "Cargas líquidas",
+        "Cargas que são unitizadas, como contêineres, sacarias, etc.",
+        "Carga a granel"
+      ],
+      correta: 2,
+      explicacao: "Carga geral são mercadorias unitizadas, ou seja, organizadas em volumes como sacarias, contêineres ou caixas."
+    },
+    {
+      texto: "Qual o papel da ANTAQ em relação à Lei dos Portos?",
+      opcoes: [
+        "Executar operações portuárias",
+        "Gerenciar o OGMO",
+        "Regulamentar e fiscalizar as atividades portuárias",
+        "Escalar trabalhadores"
+      ],
+      correta: 2,
+      explicacao: "A ANTAQ tem a função de regular, supervisionar e fiscalizar os serviços de transporte aquaviário e portos."
+    },
+    {
+      texto: "O que acontece quando o trabalhador avulso descumpre as normas do OGMO repetidamente?",
+      opcoes: [
+        "Recebe uma advertência e permanece sem penalidade",
+        "É promovido para trabalho fixo",
+        "Pode ser advertido, suspenso e até descredenciado",
+        "Não pode ser punido"
+      ],
+      correta: 2,
+      explicacao: "Infrações reincidentes podem gerar punições progressivas como advertência, suspensão e descredenciamento do OGMO."
+    },
+    {
+      texto: "A Convenção Coletiva 2024/2026 trata de quais temas principais?",
+      opcoes: [
+        "Importação e exportação de produtos",
+        "Fiscalização portuária",
+        "Salário, escalas, segurança e benefícios para trabalhadores",
+        "Controle de navios estrangeiros"
+      ],
+      correta: 2,
+      explicacao: "A Convenção define temas como salário, jornada, escala, segurança e condições gerais de trabalho."
+    }
+  ];
+
+
+
+  
+
+    const container = document.getElementById("questoes-container");
+    questoes.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "questao";
+      div.id = `questao${i}`;
+      div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
+        q.opcoes.map((opt, j) =>
+          `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
+        ).join('') +
+        `<div class="explicacao">${q.explicacao}</div>`;
+      container.appendChild(div);
+    });
+
+    function corrigir() {
+      let acertos = 0;
+
+      questoes.forEach((q, i) => {
+        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+        const questaoDiv = document.getElementById(`questao${i}`);
+        const msg = document.createElement("div");
+        const explicacao = questaoDiv.querySelector(".explicacao");
+
+        // Exibe a explicação
+        if (explicacao) {
+          explicacao.style.display = "block";
+        }
+
+        if (resposta && parseInt(resposta.value) === q.correta) {
+          acertos++;
+          msg.className = "acerto";
+          msg.innerText = "✅ Resposta correta";
+        } else {
+          msg.className = "erro";
+          msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
+        }
+
+        if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
+          questaoDiv.appendChild(msg);
+        }
+      });
+
+      document.getElementById("resultado").innerText =
+        `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
+    }
+
+  </script>
+</body>
+</html>

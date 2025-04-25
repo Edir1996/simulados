@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulado - Língua Inglesa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .questao {
+      background: #fff;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .explicacao {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 5px;
+      display: none; /* Oculta por padrão */
+    }
+
+    .resultado {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .erro {
+      color: red;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    .acerto {
+      color: green;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <h1>Simulado - Língua Inglesa</h1>
+  <form id="prova">
+    <div id="questoes-container"></div>
+    <button type="button" onclick="corrigir()">Corrigir Prova</button>
+    <p class="resultado" id="resultado"></p>
+  </form>
+
+  <script>
+    const questoes = [
+    {
+      texto: "Leia o texto e marque a alternativa correta sobre o significado da palavra em destaque:\n\n'John loves playing football with his friends.' (A palavra em destaque é 'football')",
+      opcoes: ["A. Um esporte de equipe", "B. Uma refeição", "C. Um instrumento musical", "D. Uma cor"],
+      correta: 0,
+      explicacao: "'Football' é um esporte de equipe, também conhecido como futebol em alguns países."
+    },
+    {
+      texto: "Escolha a alternativa que completa corretamente a frase:\n\n'He ______ to the store every Saturday.'",
+      opcoes: ["A. goes", "B. go", "C. is go", "D. going"],
+      correta: 0,
+      explicacao: "A forma correta é 'goes', pois o sujeito 'he' exige o verbo no presente simples, na forma afirmativa."
+    },
+    {
+      texto: "Marque a alternativa correta para completar a frase no passado simples:\n\n'They ______ to the cinema last night.'",
+      opcoes: ["A. go", "B. goes", "C. went", "D. gone"],
+      correta: 2,
+      explicacao: "A forma correta do passado de 'go' é 'went'."
+    },
+    {
+      texto: "Qual das alternativas abaixo está correta para a frase 'I _______ my homework now.'?",
+      opcoes: ["A. do", "B. am doing", "C. does", "D. doing"],
+      correta: 1,
+      explicacao: "'I am doing' é a forma correta para indicar uma ação que está ocorrendo no momento."
+    },
+    {
+      texto: "Escolha a alternativa correta: '_______ you like ice cream?'",
+      opcoes: ["A. Do", "B. Are", "C. Does", "D. Is"],
+      correta: 0,
+      explicacao: "A forma correta de fazer perguntas no presente simples é 'Do', usada com pronomes como 'you'."
+    },
+    {
+      texto: "Marque a alternativa que completa corretamente a frase:\n\n'He is a teacher. ________ teaches English.'",
+      opcoes: ["A. She", "B. It", "C. They", "D. He"],
+      correta: 3,
+      explicacao: "A frase 'He teaches English' está correta, pois 'he' já está sendo usado como sujeito."
+    },
+    {
+      texto: "Qual das alternativas abaixo está correta para a frase: 'The cat is ______ the table.'",
+      opcoes: ["A. on", "B. in", "C. under", "D. above"],
+      correta: 0,
+      explicacao: "A preposição correta é 'on', indicando que o gato está em cima da mesa."
+    },
+    {
+      texto: "Leia o texto e marque a alternativa correta sobre o significado da palavra em destaque:\n\n'The sun is shining brightly.' (A palavra em destaque é 'shining')",
+      opcoes: ["A. Estar apagando", "B. Estar brilhando", "C. Estar sumindo", "D. Estar se escondendo"],
+      correta: 1,
+      explicacao: "A palavra 'shining' significa 'brilhando', indicando que o sol está emitindo luz intensa."
+    },
+    {
+      texto: "Escolha a alternativa correta para a frase 'I _______ to visit my grandmother next week.'",
+      opcoes: ["A. am going", "B. go", "C. will going", "D. going"],
+      correta: 0,
+      explicacao: "'I am going' é a forma correta para expressar um plano ou intenção futura."
+    },
+    {
+      texto: "Qual é a forma correta de perguntar: 'Você está feliz?' em inglês?",
+      opcoes: ["A. Are you happy?", "B. You are happy?", "C. Happy are you?", "D. You happy are?"],
+      correta: 0,
+      explicacao: "A forma correta para perguntar é 'Are you happy?' com a inversão do sujeito e do verbo."
+    },
+    {
+      texto: "Qual é a tradução correta da palavra 'book' em inglês?",
+      opcoes: ["A. Caderno", "B. Livro", "C. Caneta", "D. Mesa"],
+      correta: 1,
+      explicacao: "'Book' significa 'livro' em inglês."
+    },
+    {
+      texto: "Qual é a alternativa correta para completar a frase:\n\n'We _______ playing soccer right now.'",
+      opcoes: ["A. am", "B. is", "C. are", "D. be"],
+      correta: 2,
+      explicacao: "'We are' é a forma correta de usar o verbo 'to be' no presente contínuo para o pronome 'we'."
+    },
+    {
+      texto: "Como completar corretamente a frase: 'I _______ from Brazil.'",
+      opcoes: ["A. am", "B. is", "C. are", "D. was"],
+      correta: 0,
+      explicacao: "A forma correta é 'I am' porque o pronome 'I' exige o verbo 'am'."
+    },
+    {
+      texto: "Marque a alternativa correta para a frase: 'She _______ at home yesterday.'",
+      opcoes: ["A. is", "B. was", "C. were", "D. is being"],
+      correta: 1,
+      explicacao: "'Was' é a forma correta do verbo 'to be' no passado para 'she'."
+    },
+    {
+      texto: "Qual é a tradução da palavra 'dog' em inglês?",
+      opcoes: ["A. Cachorro", "B. Gato", "C. Pássaro", "D. Peixe"],
+      correta: 0,
+      explicacao: "'Dog' significa 'cachorro' em inglês."
+    },
+    {
+      texto: "Escolha a alternativa correta para a frase:\n\n'They _______ going to the park tomorrow.'",
+      opcoes: ["A. is", "B. are", "C. was", "D. were"],
+      correta: 1,
+      explicacao: "A forma correta é 'They are', pois o verbo 'to be' concorda com o sujeito plural 'they'."
+    },
+    {
+      texto: "Qual é a forma correta de perguntar: 'Ele gosta de música?' em inglês?",
+      opcoes: ["A. Does he like music?", "B. He like music?", "C. Likes he music?", "D. He does like music?"],
+      correta: 0,
+      explicacao: "A forma correta de perguntar é 'Does he like music?', utilizando o auxiliar 'does'."
+    },
+    {
+      texto: "Complete a frase: 'We _______ happy to be here.'",
+      opcoes: ["A. am", "B. is", "C. are", "D. was"],
+      correta: 2,
+      explicacao: "'We are' é a forma correta de usar o verbo 'to be' para o pronome 'we'."
+    },
+    {
+      texto: "Qual é a tradução de 'cat' em inglês?",
+      opcoes: ["A. Cachorro", "B. Gato", "C. Pássaro", "D. Cavalo"],
+      correta: 1,
+      explicacao: "'Cat' significa 'gato' em inglês."
+    },
+    {
+      texto: "Qual preposição completa corretamente a frase: 'The book is ______ the table.'?",
+      opcoes: ["A. on", "B. in", "C. at", "D. under"],
+      correta: 0,
+      explicacao: "A preposição correta é 'on', pois indica que o livro está em cima da mesa."
+    },
+    {
+      texto: "Escolha a alternativa correta para completar a frase:\n\n'He _______ a good player.'",
+      opcoes: ["A. is", "B. am", "C. are", "D. was"],
+      correta: 0,
+      explicacao: "A forma correta é 'He is', pois o sujeito 'he' exige o verbo 'is'."
+    }
+  ];
+
+
+
+    const container = document.getElementById("questoes-container");
+    questoes.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "questao";
+      div.id = `questao${i}`;
+      div.innerHTML = `<p><b>${i + 1}.</b> ${q.texto}</p>` +
+        q.opcoes.map((opt, j) =>
+          `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label><br>`
+        ).join('') +
+        `<div class="explicacao">${q.explicacao}</div>`;
+      container.appendChild(div);
+    });
+
+    function corrigir() {
+      let acertos = 0;
+
+      questoes.forEach((q, i) => {
+        const resposta = document.querySelector(`input[name="q${i}"]:checked`);
+        const questaoDiv = document.getElementById(`questao${i}`);
+        const msg = document.createElement("div");
+        const explicacao = questaoDiv.querySelector(".explicacao");
+
+        // Exibe a explicação
+        if (explicacao) {
+          explicacao.style.display = "block";
+        }
+
+        if (resposta && parseInt(resposta.value) === q.correta) {
+          acertos++;
+          msg.className = "acerto";
+          msg.innerText = "✅ Resposta correta";
+        } else {
+          msg.className = "erro";
+          msg.innerText = `❌ Resposta errada. Alternativa correta: "${q.opcoes[q.correta]}"`;
+        }
+
+        if (!questaoDiv.querySelector(".erro") && !questaoDiv.querySelector(".acerto")) {
+          questaoDiv.appendChild(msg);
+        }
+      });
+
+      document.getElementById("resultado").innerText =
+        `Você acertou ${acertos} de ${questoes.length} questões. Nota final: ${(acertos * 1.5).toFixed(2)} / 30.00`;
+    }
+
+  </script>
+</body>
+</html>
