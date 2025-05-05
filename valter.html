@@ -56,12 +56,23 @@
       background: #8c6239;
       text-align: center;
       padding: 10px 0;
+      display: flex;
+      justify-content: center;  /* Garante que os itens fiquem centralizados */
+      flex-wrap: wrap;  /* Permite que os itens que não couberem na tela se movam para a linha seguinte */
     }
+
     nav a {
       color: #fff8f0;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        margin: 5px;  /* Menor margem em telas pequenas */
+        font-size: 1.1em;  /* Ajuste no tamanho da fonte */
+      }
     }
     nav a:hover {
       color: #ffe7b3;
@@ -251,10 +262,10 @@
   </header>
 
   <nav>
-    <a href="#bio">Biografia</a>
-    <a href="#fotos">Fotos</a>
-    <a href="#videos">Vídeos</a>
-    <a href="#depoimentos">Depoimentos</a>
+    <a href="#bio">Biografia |</a>
+    <a href="#fotos">Fotos |</a>
+    <a href="#videos">Vídeos |</a>
+    <a href="#depoimentos">Depoimentos |</a>
     <a href="#contato">Contato</a>
   </nav>
 
