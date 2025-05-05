@@ -305,13 +305,28 @@
       <button class="carousel-btn next" onclick="moverCarousel('carouselFotos', 1)">&#10095;</button>
     </div>
   </section>
-  <section id="videos">
+  <<section id="videos">
     <h2>Vídeos</h2>
     <div class="carousel-container">
       <div class="carousel-track" id="carouselVideos">
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe></div>
-        <div class="carousel-item"><iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe></div>
+        <!-- Video 1 -->
+        <div class="carousel-item">
+          <div class="video-thumbnail" onclick="loadVideo(this, 'https://www.youtube.com/embed/tgbNymZ7vqY')">
+            <img src="https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg" alt="Miniatura do Vídeo 1">
+          </div>
+        </div>
+        <!-- Video 2 -->
+        <div class="carousel-item">
+          <div class="video-thumbnail" onclick="loadVideo(this, 'https://www.youtube.com/embed/tgbNymZ7vqY')">
+            <img src="https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg" alt="Miniatura do Vídeo 2">
+          </div>
+        </div>
+        <!-- Video 3 -->
+        <div class="carousel-item">
+          <div class="video-thumbnail" onclick="loadVideo(this, 'https://www.youtube.com/embed/tgbNymZ7vqY')">
+            <img src="https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg" alt="Miniatura do Vídeo 3">
+          </div>
+        </div>
       </div>
       <button class="carousel-btn prev" onclick="moverCarousel('carouselVideos', -1)">&#10094;</button>
       <button class="carousel-btn next" onclick="moverCarousel('carouselVideos', 1)">&#10095;</button>
@@ -342,6 +357,24 @@
   </footer>
 
   <script>
+
+function loadVideo(element, videoUrl) {
+    // Criar o iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = videoUrl;
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    iframe.style.width = '100%';
+    iframe.style.height = '250px';
+    iframe.style.borderRadius = '12px';
+    iframe.style.border = '3px solid #d39e4f';
+
+    // Substituir a miniatura e o botão pelo iframe
+    const parent = element.parentNode;
+    parent.innerHTML = '';  // Limpar conteúdo anterior
+    parent.appendChild(iframe);  // Adicionar o iframe
+  }
+
     const frases = [
     "O charme da música brasileira",
     "Sertanejo, MPB e muito mais",
