@@ -59,6 +59,8 @@
       display: flex;
       justify-content: center;  /* Garante que os itens fiquem centralizados */
       flex-wrap: wrap;  /* Permite que os itens que não couberem na tela se movam para a linha seguinte */
+      overflow-x: auto;  /* Habilita a rolagem horizontal */
+      white-space: nowrap; /* Impede quebra de linha */
     }
 
     nav a {
@@ -66,6 +68,8 @@
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      display: inline-block;  /* Garante que os links fiquem em linha */
+      white-space: nowrap;  /* Impede que o texto quebre em várias linhas */
     }
 
     @media (max-width: 768px) {
@@ -74,9 +78,22 @@
         font-size: 1.1em;  /* Ajuste no tamanho da fonte */
       }
     }
+
+    @media (max-width: 400px) {
+      nav {
+        padding: 5px 0; /* Reduz o espaçamento */
+      }
+
+      nav a {
+        margin: 0 5px;  /* Menor margem para evitar quebra */
+        font-size: 1em;   /* Ajuste no tamanho da fonte */
+      }
+    }
+
     nav a:hover {
       color: #ffe7b3;
     }
+
 
     section {
       padding: 10px 20px;
