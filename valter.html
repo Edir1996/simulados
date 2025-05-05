@@ -8,11 +8,24 @@
   <meta name="keywords" content="Valter Gohr, cantor, música ao vivo, sertanejo, MPB, flashback, eventos musicais">
   <meta name="author" content="Valter Gohr">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-   <!-- Precarregar o arquivo CSS -->
-   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" as="style" />
-    <!-- Carregar o CSS de forma assíncrona -->
-  <link id="asyncCSS" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" media="print" onload="this.media='all'" />
+  <!-- Preconnect para reduzir tempo de resolução DNS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Precarregar e aplicar a fonte Great Vibes -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
+
+  <!-- Precarregar e aplicar a fonte Dancing Script -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" media="print" onload="this.media='all'">
+
+  <!-- Fallback para navegadores sem JavaScript -->
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+  </noscript>
+
   <style>
     body {
       margin: 0;
@@ -116,6 +129,7 @@
 
     .bio p {
       font-family: 'Great Vibes', cursive;
+      font-display: swap;
       line-height: 1.6;
       font-size: 1.4em;
       text-align: center;
