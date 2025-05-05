@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,31 +6,45 @@
   <meta name="keywords" content="Valter Gohr, cantor, música ao vivo, sertanejo, MPB, flashback, eventos musicais">
   <meta name="author" content="Valter Gohr">
 
-  <!-- Preconnect e DNS-prefetch -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <!-- Estilo crítico inline -->
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #fff; }
+    header { background: url('background.avif') no-repeat center center; background-size: cover; min-height: 300px; /* aumente conforme desejar */ text-align: center; color: white; position: relative; /* necessário para posicionamento do overlay */}
+    nav { display: flex; justify-content: center; gap: 15px; background: #222; padding: 10px; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    .fancy { font-family: 'Great Vibes', cursive; font-size: 2em; }
+  </style>
 
-  <!-- Fontes Google: carregamento eficiente -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- Font Awesome adiado -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+
+  <!-- Preconnect para fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts com preload + media print -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" media="print" onload="this.media='all'">
+
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </noscript>
 
-  <!-- FontAwesome (adicione somente os ícones usados, se possível) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p8f8UXwEIlM5..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="style.css" media="all">
+  <!-- CSS principal adiado -->
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
 </head>
+
 <body>
 
 <header>
   <div class="overlay">
     <h1>Valter Gohr</h1>
-    <p id="frase"></p>
+    <p id="frase">O melhor da pisadinha</p>
   </div>
 </header>
 
