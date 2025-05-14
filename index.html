@@ -2,80 +2,326 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulados - Menu Principal</title>
+  <title>Batalha de Bots</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
-      padding: 30px 20px;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: #222;
     }
-
-    h2 {
-      color: #333;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 600px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-      background-color: #007BFF;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 1.1em;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    a:hover {
-      background-color: #0056b3;
-      transform: scale(1.02);
-    }
-
-    @media (min-width: 500px) {
-      .container {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      a {
-        font-size: 1.2em;
-      }
+    .crosshair {
+      cursor: crosshair;
     }
   </style>
 </head>
 <body>
-  <h2>📚 Simulados Disponíveis</h2>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+<script>
+// Código Phaser atualizado com wall customizada, efeito de bolinha e suporte a diagonais
 
-  <div class="container">
-    <a href="Simulado - Matemática.html">📘 Matemática</a>
-    <a href="Simulado - Língua portuguesa.html">📗 Língua Portuguesa</a>
-    <a href="Simulado - Língua Inglesa.html">📙 Língua Inglesa</a>
-    <a href="Simulado - Legislação Portuária.html">⚖️ Legislação Portuária</a>
-    <a href="Simulado - Informática.html">💻 Informática</a>
-    <a href="Simulado - Conhecimentos Específicos.html">📚 Conhecimentos Específicos</a>
-    <a href="valter.html">Site cantor valter</a>
-  </div>
+const config = {
+  type: Phaser.AUTO,
+  width: window.innerWidth,
+  height: window.innerHeight,
+  backgroundColor: '#333',
+  physics: {
+    default: 'arcade',
+    arcade: { debug: false }
+  },
+  scene: { preload, create, update }
+};
+
+const game = new Phaser.Game(config);
+
+let player, cursors;
+let bots = [];
+let crosshairActive = false;
+let wallMode = false;
+let wallCooldown = false;
+let wallGroup;
+let missiles = [];
+let botMissiles = [];
+const MAX_BOTS = 100;
+const SUDDEN_DEATH_DISTANCE = 500;
+
+function preload() {}
+
+function create() {
+  this.input.keyboard.addCapture(['F2', 'F3', 'DOWN', 'LEFT', 'RIGHT']);
+
+  this.cameras.main.setBounds(0, 0, 4000, 4000);
+  this.physics.world.setBounds(0, 0, 4000, 4000);
+
+  player = criarPersonagem.call(this, 2000, 2000, 0x0000ff, true);
+  this.cameras.main.startFollow(player.sprite);
+
+  cursors = this.input.keyboard.createCursorKeys();
+  wallGroup = this.physics.add.group();
+
+  for (let i = 0; i < MAX_BOTS; i++) criarBot.call(this);
+
+  this.input.keyboard.on('keydown-F2', () => {
+    crosshairActive = true;
+    wallMode = false;
+    document.body.classList.add('crosshair');
+  });
+
+  this.input.keyboard.on('keydown-F3', () => {
+    wallMode = true;
+    crosshairActive = false;
+    document.body.classList.add('crosshair');
+  });
+
+  this.input.on('pointerdown', (pointer) => {
+    if (!player.alive) return;
+    const worldPoint = pointer.positionToCamera(this.cameras.main);
+
+    if (crosshairActive) {
+      crosshairActive = false;
+      document.body.classList.remove('crosshair');
+
+      bots.forEach(bot => {
+        if (!bot.alive) return;
+        const botBounds = bot.sprite.getBounds();
+        const cameraView = this.cameras.main.worldView;
+        const isBotVisible = Phaser.Geom.Rectangle.Overlaps(cameraView, botBounds);
+        if (Phaser.Geom.Rectangle.Contains(botBounds, worldPoint.x, worldPoint.y) && isBotVisible) {
+          const m = this.add.circle(player.sprite.x, player.sprite.y, 5, 0x000000);
+          this.physics.add.existing(m);
+          m.body.setCircle(5);
+          m.target = bot;
+          missiles.push(m);
+        }
+      });
+    } else if (wallMode && !wallCooldown) {
+      wallCooldown = true;
+      wallMode = false;
+      document.body.classList.remove('crosshair');
+
+      // Efeito de bolinha indo até o destino
+      const marker = this.add.circle(player.sprite.x, player.sprite.y, 5, 0xffffff);
+      this.physics.add.existing(marker);
+      marker.body.setVelocity(0);
+
+      const speed = 800;
+      this.physics.moveTo(marker, worldPoint.x, worldPoint.y, speed);
+
+      const distance = Phaser.Math.Distance.Between(player.sprite.x, player.sprite.y, worldPoint.x, worldPoint.y);
+      const time = distance / speed * 1000;
+
+      setTimeout(() => {
+        marker.destroy();
+        const dx = worldPoint.x - player.sprite.x;
+        const dy = worldPoint.y - player.sprite.y;
+        const angle = Math.atan2(dy, dx);
+
+        let wall;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 20, 80, 0xff0000);
+        } else if (Math.abs(dy) > Math.abs(dx)) {
+          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 80, 20, 0xff0000);
+        } else {
+          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 60, 60, 0xff0000);
+          wall.setRotation(angle);
+        }
+
+        // Criando a parede
+          this.physics.add.existing(wall);
+
+          // Definir a parede como imutável
+          wall.body.immovable = true;
+
+          // Garantir que não há qualquer efeito de "bounce" ou "elasticidade"
+          wall.body.setBounce(0);  // Sem quique
+
+          // Garantir que a parede não tenha forças de movimento aplicadas
+          wall.body.setVelocity(0); // Garantir que não tenha velocidade ao ser criada
+          wall.body.setAcceleration(0); // Garantir que não tenha aceleração
+
+          // Adiciona a parede ao grupo de paredes
+          wallGroup.add(wall);
+
+          // Colisão com o jogador
+          this.physics.add.collider(player.sprite, wall);
+
+          // Colisão com os bots
+          bots.forEach(bot => this.physics.add.collider(bot.sprite, wall));
+
+          // Colisão com os mísseis dos jogadores
+          missiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
+
+          // Colisão com os mísseis dos bots
+          botMissiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
+
+
+
+        // Remove após 3s
+        setTimeout(() => wall.destroy(), 100000);
+        setTimeout(() => wallCooldown = false, 2000);
+      }, time);
+    }
+  });
+
+  this.time.addEvent({
+    delay: 100,
+    loop: true,
+    callback: () => {
+      bots.forEach(bot => {
+        if (!bot.alive) return;
+        const alvo = escolherAlvoAleatorio(bot);
+        if (!alvo || !isVisibleInCamera.call(this, alvo)) return;
+        const distance = Phaser.Math.Distance.Between(bot.sprite.x, bot.sprite.y, alvo.sprite.x, alvo.sprite.y);
+        if (distance < SUDDEN_DEATH_DISTANCE) {
+          const m = this.add.circle(bot.sprite.x, bot.sprite.y, 5, 0x000000);
+          this.physics.add.existing(m);
+          m.body.setCircle(5);
+          m.target = alvo;
+
+          // Adicionar colisão com as paredes
+          this.physics.add.collider(m, wallGroup, () => m.destroy());
+          botMissiles.push(m);
+        }
+      });
+    }
+  });
+
+  this.time.addEvent({
+    delay: 1000,
+    loop: true,
+    callback: () => {
+      bots.forEach(bot => {
+        if (bot.alive) {
+          const dir = Phaser.Math.Between(0, 3);
+          const speed = 100;
+          bot.sprite.body.setVelocity(0);
+          if (dir === 0) bot.sprite.body.setVelocityX(speed);
+          if (dir === 1) bot.sprite.body.setVelocityX(-speed);
+          if (dir === 2) bot.sprite.body.setVelocityY(speed);
+          if (dir === 3) bot.sprite.body.setVelocityY(-speed);
+        }
+      });
+    }
+  });
+}
+
+function update() {
+  if (player.alive) {
+    const speed = 200;
+    player.sprite.body.setVelocity(0);
+    if (cursors.left.isDown) player.sprite.body.setVelocityX(-speed);
+    if (cursors.right.isDown) player.sprite.body.setVelocityX(speed);
+    if (cursors.up.isDown) player.sprite.body.setVelocityY(-speed);
+    if (cursors.down.isDown) player.sprite.body.setVelocityY(speed);
+    atualizarBarra(player);
+  }
+
+  bots.forEach(bot => {
+    if (bot.alive) atualizarBarra(bot);
+  });
+
+  missiles.forEach((m, i) => {
+    if (m.target && m.target.alive) {
+      // Verifique se o corpo (body) do míssil está definido
+      if (m.body) {
+        this.physics.moveTo(m, m.target.sprite.x, m.target.sprite.y, 500);
+        if (this.physics.overlap(m, m.target.sprite)) {
+          m.destroy();
+          missiles.splice(i, 1);
+          m.target.life -= 50;
+          if (m.target.life <= 0) matarPersonagem.call(this, m.target);
+        }
+      }
+    }
+  });
+
+  botMissiles.forEach((m, i) => {
+    if (m.target && m.target.alive && isVisibleInCamera.call(this, m.target)) {
+      // Verifique se o corpo (body) do míssil está definido
+      if (m.body) {
+        this.physics.moveTo(m, m.target.sprite.x, m.target.sprite.y, 400);
+        if (this.physics.overlap(m, m.target.sprite)) {
+          m.destroy();
+          botMissiles.splice(i, 1);
+          m.target.life -= 20;
+          if (m.target.life <= 0) matarPersonagem.call(this, m.target);
+        }
+        if (!m.target.alive || m.target.sprite.getBounds().contains(m.x, m.y)) {
+          m.destroy();
+          botMissiles.splice(i, 1);
+        }
+      }
+    }
+  });
+}
+
+function isVisibleInCamera(target) {
+  const cameraView = this.cameras.main.worldView;
+  const targetBounds = target.sprite.getBounds();
+  return Phaser.Geom.Rectangle.Overlaps(cameraView, targetBounds);
+}
+
+
+function criarPersonagem(x, y, color, isPlayer = false) {
+  const sprite = this.add.rectangle(x, y, 40, 40, color);
+  this.physics.add.existing(sprite);
+  sprite.body.setCollideWorldBounds(true);
+  sprite.body.setBounce(0); // Evitar que os jogadores e bots "rebotem" nas paredes
+  return {
+    sprite,
+    bar: this.add.graphics(),
+    life: 100,
+    alive: true,
+    isPlayer
+  };
+}
+
+function criarBot() {
+  let x, y;
+  let attempts = 0;
+  do {
+    x = Phaser.Math.Between(100, 3900);
+    y = Phaser.Math.Between(100, 3900);
+    attempts++;
+  } while (Phaser.Math.Distance.Between(x, y, player.sprite.x, player.sprite.y) < 100 && attempts < 20);
+
+  const corAleatoria = Phaser.Display.Color.RandomRGB().color;
+  const bot = criarPersonagem.call(this, x, y, corAleatoria);
+  bots.push(bot);
+}
+
+function atualizarBarra(personagem) {
+  const { x, y } = personagem.sprite;
+  personagem.bar.clear();
+  personagem.bar.fillStyle(0x000000);
+  personagem.bar.fillRect(x - 20, y - 30, 40, 5);
+  personagem.bar.fillStyle(0x00ff00);
+  personagem.bar.fillRect(x - 20, y - 30, (personagem.life / 100) * 40, 5);
+}
+
+function matarPersonagem(personagem) {
+  personagem.alive = false;
+  personagem.sprite.destroy();
+  personagem.bar.destroy();
+  setTimeout(() => {
+    if (personagem.isPlayer) {
+      player = criarPersonagem.call(this, 2000, 2000, 0x0000ff, true);
+      this.cameras.main.startFollow(player.sprite);
+    } else {
+      criarBot.call(this);
+    }
+  }, 1000);
+}
+
+
+
+
+function escolherAlvoAleatorio(bot) {
+  const alvos = bots.filter(b => b !== bot && b.alive);
+  if (player.alive) alvos.push(player);
+  return Phaser.Utils.Array.GetRandom(alvos);
+}
+
+
+
+</script>
 </body>
 </html>
