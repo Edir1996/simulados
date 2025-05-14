@@ -72,94 +72,100 @@ function create() {
   });
 
   this.input.on('pointerdown', (pointer) => {
-    if (!player.alive) return;
-    const worldPoint = pointer.positionToCamera(this.cameras.main);
+  if (!player.alive) return;
+  const worldPoint = pointer.positionToCamera(this.cameras.main);
 
-    if (crosshairActive) {
-      crosshairActive = false;
-      document.body.classList.remove('crosshair');
+  if (crosshairActive) {
+    crosshairActive = false;
+    document.body.classList.remove('crosshair');
 
-      bots.forEach(bot => {
-        if (!bot.alive) return;
-        const botBounds = bot.sprite.getBounds();
-        const cameraView = this.cameras.main.worldView;
-        const isBotVisible = Phaser.Geom.Rectangle.Overlaps(cameraView, botBounds);
-        if (Phaser.Geom.Rectangle.Contains(botBounds, worldPoint.x, worldPoint.y) && isBotVisible) {
-          const m = this.add.circle(player.sprite.x, player.sprite.y, 5, 0x000000);
-          this.physics.add.existing(m);
-          m.body.setCircle(5);
-          m.target = bot;
-          missiles.push(m);
-        }
+    bots.forEach(bot => {
+      if (!bot.alive) return;
+      const botBounds = bot.sprite.getBounds();
+      const cameraView = this.cameras.main.worldView;
+      const isBotVisible = Phaser.Geom.Rectangle.Overlaps(cameraView, botBounds);
+      if (Phaser.Geom.Rectangle.Contains(botBounds, worldPoint.x, worldPoint.y) && isBotVisible) {
+        const m = this.add.circle(player.sprite.x, player.sprite.y, 5, 0x000000);
+        this.physics.add.existing(m);
+        m.body.setCircle(5);
+        m.target = bot;
+        missiles.push(m);
+      }
+    });
+  } else if (wallMode && !wallCooldown) {
+    wallCooldown = true;
+    wallMode = false;
+    document.body.classList.remove('crosshair');
+
+    // Efeito de bolinha indo até o destino
+    const marker = this.add.circle(player.sprite.x, player.sprite.y, 5, 0xffffff);
+    this.physics.add.existing(marker);
+    marker.body.setVelocity(0);
+
+    const speed = 800;
+    this.physics.moveTo(marker, worldPoint.x, worldPoint.y, speed);
+
+    const distance = Phaser.Math.Distance.Between(player.sprite.x, player.sprite.y, worldPoint.x, worldPoint.y);
+    const time = distance / speed * 1000;
+
+    setTimeout(() => {
+      marker.destroy();
+      const dx = worldPoint.x - player.sprite.x;
+      const dy = worldPoint.y - player.sprite.y;
+      const angle = Math.atan2(dy, dx);
+
+      let wall;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        wall = this.add.rectangle(worldPoint.x, worldPoint.y, 20, 80, 0xff0000);
+      } else if (Math.abs(dy) > Math.abs(dx)) {
+        wall = this.add.rectangle(worldPoint.x, worldPoint.y, 80, 20, 0xff0000);
+      } else {
+        wall = this.add.rectangle(worldPoint.x, worldPoint.y, 60, 60, 0xff0000);
+        wall.setRotation(angle);
+      }
+
+      // Criando a parede
+      this.physics.add.existing(wall);
+
+      // Definir a parede como imutável para evitar movimentação
+      wall.body.immovable = true;  // A parede não será movida por outras colisões
+
+      // Garantir que não há qualquer efeito de "bounce" ou "elasticidade"
+      wall.body.setBounce(0);  // Sem quique
+
+      // Impede que a parede tenha qualquer velocidade ou aceleração
+      wall.body.setVelocity(0);  // Sem velocidade
+      wall.body.setAcceleration(0);  // Sem aceleração
+      wall.body.setDrag(0);  // Impede arraste
+
+      // Adiciona a parede ao grupo de paredes
+      wallGroup.add(wall);
+
+      // Quando o jogador colidir com a parede
+      this.physics.add.collider(player.sprite, wall, () => {
+        // Impede que o jogador tenha qualquer efeito ao colidir com a parede
+        player.sprite.body.setVelocity(0); // Corrigido para acessar o corpo do sprite
       });
-    } else if (wallMode && !wallCooldown) {
-      wallCooldown = true;
-      wallMode = false;
-      document.body.classList.remove('crosshair');
 
-      // Efeito de bolinha indo até o destino
-      const marker = this.add.circle(player.sprite.x, player.sprite.y, 5, 0xffffff);
-      this.physics.add.existing(marker);
-      marker.body.setVelocity(0);
+      // Quando o bot colidir com a parede
+      bots.forEach(bot => this.physics.add.collider(bot.sprite, wall, () => {
+        // Impede que os bots tenham qualquer efeito ao colidir com a parede
+        bot.sprite.body.setVelocity(0); // Corrigido para acessar o corpo do sprite
+      }));
 
-      const speed = 800;
-      this.physics.moveTo(marker, worldPoint.x, worldPoint.y, speed);
+      // Colisão com os mísseis dos jogadores
+      missiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
 
-      const distance = Phaser.Math.Distance.Between(player.sprite.x, player.sprite.y, worldPoint.x, worldPoint.y);
-      const time = distance / speed * 1000;
+      // Colisão com os mísseis dos bots
+      botMissiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
 
-      setTimeout(() => {
-        marker.destroy();
-        const dx = worldPoint.x - player.sprite.x;
-        const dy = worldPoint.y - player.sprite.y;
-        const angle = Math.atan2(dy, dx);
+      // Remove a parede após 3s
+      setTimeout(() => wall.destroy(), 100000);
+      setTimeout(() => wallCooldown = false, 2000);
+    }, time);
+  }
+});
 
-        let wall;
-        if (Math.abs(dx) > Math.abs(dy)) {
-          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 20, 80, 0xff0000);
-        } else if (Math.abs(dy) > Math.abs(dx)) {
-          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 80, 20, 0xff0000);
-        } else {
-          wall = this.add.rectangle(worldPoint.x, worldPoint.y, 60, 60, 0xff0000);
-          wall.setRotation(angle);
-        }
-
-        // Criando a parede
-          this.physics.add.existing(wall);
-
-          // Definir a parede como imutável
-          wall.body.immovable = true;
-
-          // Garantir que não há qualquer efeito de "bounce" ou "elasticidade"
-          wall.body.setBounce(0);  // Sem quique
-
-          // Garantir que a parede não tenha forças de movimento aplicadas
-          wall.body.setVelocity(0); // Garantir que não tenha velocidade ao ser criada
-          wall.body.setAcceleration(0); // Garantir que não tenha aceleração
-
-          // Adiciona a parede ao grupo de paredes
-          wallGroup.add(wall);
-
-          // Colisão com o jogador
-          this.physics.add.collider(player.sprite, wall);
-
-          // Colisão com os bots
-          bots.forEach(bot => this.physics.add.collider(bot.sprite, wall));
-
-          // Colisão com os mísseis dos jogadores
-          missiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
-
-          // Colisão com os mísseis dos bots
-          botMissiles.forEach(m => this.physics.add.collider(m, wall, () => m.destroy()));
-
-
-
-        // Remove após 3s
-        setTimeout(() => wall.destroy(), 100000);
-        setTimeout(() => wallCooldown = false, 2000);
-      }, time);
-    }
-  });
 
   this.time.addEvent({
     delay: 100,
